@@ -1,5 +1,5 @@
 <?php
-if (!defined('ABSPATH')) die('No direct access allowed!');
+if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!');
 
 $options = $this->get_options('paypal');
 $gateways = $this->get_options('gateways');

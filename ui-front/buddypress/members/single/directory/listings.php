@@ -57,7 +57,7 @@ if ( ! is_post_type_archive('directory_listing') ): ?>
 	</h1>
 </header>
 <?php else: ?>
-<div id="dr_no_listings"><?php echo apply_filters( 'dr_listing_list_none', __( 'No Listings', $this->text_domain ) ); ?></div>
+<div id="dr_no_listings"><?php echo apply_filters( 'dr_listing_list_none', __( 'Keine Einträge', $this->text_domain ) ); ?></div>
 <?php endif; ?>
 
 <?php echo $this->pagination( $this->pagination_top ); ?>
@@ -90,24 +90,24 @@ $class = 'dr_listing';
 
 		<div class="entry-post">
 			<h2 class="entry-title">
-				<a href="<?php echo the_permalink(); ?>" title="<?php echo sprintf( esc_attr__( 'Permalink to %s', $this->text_domain ), get_the_title() ); ?>" rel="bookmark"><?php the_title();?></a>
+				<a href="<?php echo the_permalink(); ?>" title="<?php echo sprintf( esc_attr__( 'Permalink zu %s', $this->text_domain ), get_the_title() ); ?>" rel="bookmark"><?php the_title();?></a>
 			</h2>
 
 			<div class="entry-meta">
 				<?php the_dr_posted_on(); ?>
 				<div class="entry-utility">
 					<?php if ( $categories_list ): ?>
-					<span class="cat-links"><?php echo sprintf( __( '<span class="%1$s">Posted in</span> %2$s', $this->text_domain ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?></span><br />
+					<span class="cat-links"><?php echo sprintf( __( '<span class="%1$s">Veröffentlicht in</span> %2$s', $this->text_domain ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?></span><br />
 					<?php
 					unset( $categories_list );
 					endif;
 					if ( $tags_list ): ?>
-					<span class="tag-links"><?php echo sprintf ( __( '<span class="%1$s">Tagged</span> %2$s', $this->text_domain ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?></span><br />
+					<span class="tag-links"><?php echo sprintf ( __( '<span class="%1$s">Markiert</span> %2$s', $this->text_domain ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?></span><br />
 					<?php
 					unset( $tags_list );
 					endif;
 					do_action( 'sr_avg_ratings_of_listings', get_the_ID() ); ?>
-					<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', $this->text_domain ), __( '1 Review', $this->text_domain ), esc_attr__( '% Reviews', $this->text_domain ), '', __( 'Reviews Off', $this->text_domain ) ); ?></span>
+					<span class="comments-link"><?php comments_popup_link( __( 'Hinterlasse eine Bewertung', $this->text_domain ), __( '1 Bewertung', $this->text_domain ), esc_attr__( '% Bewertungen', $this->text_domain ), '', __( 'Bewertungen deaktiviert', $this->text_domain ) ); ?></span>
 				</div>
 			</div>
 

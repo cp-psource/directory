@@ -39,9 +39,9 @@ if ( ! is_post_type_archive('directory_listing') ): ?>
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 <div id="post-0" class="post error404 not-found">
-	<h1 class="entry-title"><?php _e( 'Not Found', DR_TEXT_DOMAIN ); ?></h1>
+	<h1 class="entry-title"><?php _e( 'Nicht gefunden', DR_TEXT_DOMAIN ); ?></h1>
 	<div class="entry-content">
-		<p><?php _e( 'Apologies, but no results were found for the requested directory. Perhaps searching will help find a related listing.', DR_TEXT_DOMAIN ); ?></p>
+		<p><?php _e( 'Entschuldigung, aber für das angeforderte Verzeichnis wurden keine Ergebnisse gefunden. Vielleicht hilft die Suche dabei, einen entsprechenden Eintrag zu finden.', DR_TEXT_DOMAIN ); ?></p>
 		<?php get_search_form(); ?>
 	</div><!-- .entry-content -->
 </div><!-- #post-0 -->
@@ -88,24 +88,24 @@ $count = 1;
 
 			<div class="entry-post">
 				<h2 class="entry-title">
-					<a href="<?php echo the_permalink(); ?>" title="<?php echo sprintf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), get_the_title() ); ?>" rel="bookmark"><?php the_title();?></a>
+					<a href="<?php echo the_permalink(); ?>" title="<?php echo sprintf( esc_attr__( 'Permalink zu %s', DR_TEXT_DOMAIN ), get_the_title() ); ?>" rel="bookmark"><?php the_title();?></a>
 				</h2>
 
 				<div class="entry-meta">
 					<?php the_dr_posted_on(); ?>
 					<div class="entry-utility">
 						<?php if ( $categories_list ): ?>
-						<span class="cat-links"><?php echo sprintf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?></span><br />
+						<span class="cat-links"><?php echo sprintf( __( '<span class="%1$s">Veröffentlicht in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?></span><br />
 						<?php
 						unset( $categories_list );
 						endif;
 						if ( $tags_list ): ?>
-						<span class="tag-links"><?php echo sprintf ( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?></span><br />
+						<span class="tag-links"><?php echo sprintf ( __( '<span class="%1$s">Markiert</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?></span><br />
 						<?php
 						unset( $tags_list );
 						endif;
 						do_action( 'sr_avg_ratings_of_listings', get_the_ID() ); ?>
-						<br /><span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), esc_attr__( '% Reviews', DR_TEXT_DOMAIN ), '', __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>
+						<br /><span class="comments-link"><?php comments_popup_link( __( 'Hinterlasse eine Bewertung', DR_TEXT_DOMAIN ), __( '1 Bewertung', DR_TEXT_DOMAIN ), esc_attr__( '% Bewertungen', DR_TEXT_DOMAIN ), '', __( 'Bewertungen deaktiviert', DR_TEXT_DOMAIN ) ); ?></span>
 					</div>
 				</div>
 

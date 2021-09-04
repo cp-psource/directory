@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!');
+<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!');
 
 //var_dump($this->all_capabilities('jbp_job') );
 

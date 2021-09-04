@@ -22,7 +22,7 @@ $allowed_statuses = array_reverse(array_intersect_key($post_statuses, $allowed_s
 //Are we adding a Listing?
 if(! isset($_REQUEST['post_id']) ){
 	//Make an auto-draft so we have a post id to connect attachemnts to. Set global $post_id so media editor can hook up.
-	$post_ID = wp_insert_post( array( 'post_title' => __( 'Auto Draft' ), 'post_type' => $this->post_type, 'post_status' => 'auto-draft', 'comment_status' => 'closed', 'ping_status' => 'closed' ) );
+	$post_ID = wp_insert_post( array( 'post_title' => __( 'Automatischer Entwurf' ), 'post_type' => $this->post_type, 'post_status' => 'auto-draft', 'comment_status' => 'closed', 'ping_status' => 'closed' ) );
 	$listing_data = get_post($post_ID, ARRAY_A );
 	$listing_data['post_title'] = ''; //Have to have a title to insert the auto-save but we don't want it as final.
 	$editing = false;
@@ -77,9 +77,9 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<?php if(post_type_supports('directory_listing','title') ): ?>
 		<div class="editfield">
-			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label><br />
+			<label for="title"><?php _e( 'Titel', $this->text_domain ); ?></label><br />
 			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
-			<p class="description"><?php _e( 'Enter title here.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Gib hier den Titel ein.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -88,13 +88,13 @@ wp_enqueue_script('set-post-thumbnail');
 			<?php if(empty($options['media_manager']) ): ?>
 
 			<?php if(has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?><br />
-			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Feature Image Chosen", $this->text_domain); ?>';</script>
+			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Eintrags-Bild ausgewählt", $this->text_domain); ?>';</script>
 			<span class="upload-button">
 
 				<?php $class = ( empty($options['field_image_req']) && !has_post_thumbnail() ) ? 'required' : ''; ?>
 
 				<input type="file" name="feature_image" size="1" id="image" class="<?php echo $class; ?>" />
-				<button type="button" class="button"><?php _e('Set Feature Image', $this->text_domain); ?></button>
+				<button type="button" class="button"><?php _e('Eintrags-Bild einstellen', $this->text_domain); ?></button>
 			</span>
 			<br />
 
@@ -112,7 +112,7 @@ wp_enqueue_script('set-post-thumbnail');
 		<?php endif; ?>
 
 		<?php if(post_type_supports('directory_listing','editor') ): ?>
-		<label for="listingcontent"><?php _e( 'Content', $this->text_domain ); ?></label><br />
+		<label for="listingcontent"><?php _e( 'Inhalt', $this->text_domain ); ?></label><br />
 
 		<?php if(version_compare(get_bloginfo('version'), 3.3, '>=') ): ?>
 
@@ -124,14 +124,14 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<?php endif; ?>
 
-		<p class="description"><?php _e( 'The content of your listing.', $this->text_domain ); ?></p>
+		<p class="description"><?php _e( 'Der Inhalt Deines Eintrags.', $this->text_domain ); ?></p>
 		<?php endif; ?>
 
 		<?php if(post_type_supports('directory_listing','excerpt') ): ?>
 		<div class="editfield alt">
-			<label for="excerpt"><?php _e( 'Excerpt', $this->text_domain ); ?></label><br />
+			<label for="excerpt"><?php _e( 'Auszug', $this->text_domain ); ?></label><br />
 			<textarea id="excerpt" name="listing_data[post_excerpt]" rows="2" ><?php echo (isset( $listing_data['post_excerpt'] ) ) ? esc_textarea($listing_data['post_excerpt']) : ''; ?></textarea>
-			<p class="description"><?php _e( 'A short excerpt of your listing.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Ein kurzer Auszug Deines Eintrags.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -207,7 +207,7 @@ wp_enqueue_script('set-post-thumbnail');
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>
+			<p class="description"><?php _e( 'Wähle einen Status für Deinen Eintrag.', $this->text_domain ); ?></p>
 		</div>
 
 		<?php if ( isset( $CustomPress_Core ) ) : ?>
@@ -220,9 +220,9 @@ wp_enqueue_script('set-post-thumbnail');
 
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
-			<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_listing">
+			<input type="submit" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>" name="update_listing">
 
-			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
+			<input type="button" value="<?php _e( 'Abbrechen', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
 
 		<?php //echo do_shortcode('[ct_validate]') ; ?>

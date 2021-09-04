@@ -37,28 +37,28 @@ if ( isset( $_GET['updated'] ) ) {
 </form>
 
 <?php if ( $Directory_Core->is_full_access() ): ?>
-<div class="av-credits"><?php _e( 'You have access to create new ads', $Directory_Core->text_domain ); ?></div>
+<div class="av-credits"><?php _e( 'Du hast Zugriff, um neue Anzeigen zu erstellen', $Directory_Core->text_domain ); ?></div>
 <?php elseif($Directory_Core->use_credits): ?>
-<div class="av-credits"><?php _e( 'Available Credits:', $Directory_Core->text_domain ); ?> <?php echo $Directory_Core->transactions->credits; ?></div>
+<div class="av-credits"><?php _e( 'Verfügbares Guthaben:', $Directory_Core->text_domain ); ?> <?php echo $Directory_Core->transactions->credits; ?></div>
 <?php endif; ?>
 
 <div>
-	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Create New Listing',  $Directory_Core->text_domain ) .  '[/dr_add_listing_btn]'); ?>
-	<?php echo do_shortcode('[dr_my_credits_btn text="'. __('My Credits', $Directory_Core->text_domain) . '" view="loggedin"]'); ?>
+	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Neuen Eintrag erstellen',  $Directory_Core->text_domain ) .  '[/dr_add_listing_btn]'); ?>
+	<?php echo do_shortcode('[dr_my_credits_btn text="'. __('Mein Guthaben', $Directory_Core->text_domain) . '" view="loggedin"]'); ?>
 </div>
 
 <?php if ( count( $custom_query->posts ) ) : ?>
 <table class="wp-list-table widefat fixed posts">
 	<tr>
-		<th><?php _e( 'Title', DR_TEXT_DOMAIN ); ?></th>
-		<th><?php _e( 'Date', DR_TEXT_DOMAIN ); ?></th>
+		<th><?php _e( 'Titel', DR_TEXT_DOMAIN ); ?></th>
+		<th><?php _e( 'Datum', DR_TEXT_DOMAIN ); ?></th>
 	</tr>
 
 	<?php foreach ( $custom_query->posts as $listing ) :?>
 
 	<tr>
 		<td>
-			<a href="<?php echo get_permalink( $listing->ID ); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $listing->post_title ); ?>" rel="bookmark"><?php echo $listing->post_title; ?></a> - <?php echo $post_statuses[$listing->post_status]; ?>
+			<a href="<?php echo get_permalink( $listing->ID ); ?>" title="<?php printf( esc_attr__( 'Permalink zu %s', DR_TEXT_DOMAIN ), $listing->post_title ); ?>" rel="bookmark"><?php echo $listing->post_title; ?></a> - <?php echo $post_statuses[$listing->post_status]; ?>
 
 			<div class="listing-rating">
 				<?php do_action('sr_avg_ratings_of_listings', $listing->ID ); ?>
@@ -66,23 +66,23 @@ if ( isset( $_GET['updated'] ) ) {
 			</div>
 			<div class="row-actions">
 				<span class="edit">
-					<a title="Edit this listing" href="javascript:;" onclick="dr_listings.edit( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Edit', DR_TEXT_DOMAIN ); ?></a>
+					<a title="Diesen Eintrag bearbeiten" href="javascript:;" onclick="dr_listings.edit( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Bearbeiten', DR_TEXT_DOMAIN ); ?></a>
 				</span>
 				
 				<?php if(current_user_can( 'delete_listings' )): ?>
 				<span class="delete" id="delete-<?php echo $listing->ID; ?>"> |
-					<a title="Delete this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
+					<a title="Diesen Eintrag löschen" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Löschen', DR_TEXT_DOMAIN ); ?></a>
 				</span>
 				<?php endif; ?>
 
 				<span class="delete" id="delete-confirm-<?php echo $listing->ID; ?>" style="display: none;"> |
-					<?php _e( 'Delete? ', DR_TEXT_DOMAIN ); ?>
-					<a title="no" href="javascript:;" onclick="dr_listings.toggle_delete_no( '<?php echo $listing->ID; ?>' );"><?php _e( 'No', DR_TEXT_DOMAIN ); ?></a>
+					<?php _e( 'Löschen? ', DR_TEXT_DOMAIN ); ?>
+					<a title="no" href="javascript:;" onclick="dr_listings.toggle_delete_no( '<?php echo $listing->ID; ?>' );"><?php _e( 'Nein', DR_TEXT_DOMAIN ); ?></a>
 					|
-					<a title="yes" href="javascript:;" onclick="dr_listings.toggle_delete_yes( '<?php echo $listing->ID; ?>' );"><?php _e( 'Yes', DR_TEXT_DOMAIN ); ?></a>
+					<a title="yes" href="javascript:;" onclick="dr_listings.toggle_delete_yes( '<?php echo $listing->ID; ?>' );"><?php _e( 'Ja', DR_TEXT_DOMAIN ); ?></a>
 				</span>
 				<span class="view">
-					<a rel="permalink" title="Preview" href="<?php echo get_permalink( $listing->ID ); ?>"><?php _e( 'Preview', DR_TEXT_DOMAIN ); ?></a>
+					<a rel="permalink" title="Preview" href="<?php echo get_permalink( $listing->ID ); ?>"><?php _e( 'Vorschau', DR_TEXT_DOMAIN ); ?></a>
 				</span>
 			</div>
 		</td>
@@ -94,6 +94,6 @@ if ( isset( $_GET['updated'] ) ) {
 
 <?php else : ?>
 
-<h3><?php _e( 'No Listings', DR_TEXT_DOMAIN ); ?></h3>
+<h3><?php _e( 'Keine Einträge', DR_TEXT_DOMAIN ); ?></h3>
 
 <?php endif;

@@ -1,4 +1,4 @@
-<?php if ( !defined('ABSPATH') ) die('No direct access allowed!'); ?>
+<?php if ( !defined('ABSPATH') ) die('Kein direkter Zugriff erlaubt!'); ?>
 
 <div class="wrap ct-wrap ct-content-types">
 

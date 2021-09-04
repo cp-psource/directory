@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
+<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
 
 <?php
 $enable_subsite_content_types = get_site_option('allow_per_site_content_types');

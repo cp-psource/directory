@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
+<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
 
 <h3><?php esc_html_e('Add Post Type', $this->text_domain); ?></h3>
 <form action="#" method="post" class="ct-post-type">

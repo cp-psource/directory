@@ -45,7 +45,7 @@ get_header(); ?>
 				the_post();
 			}
 			?>
-			<h1 class="page-title author"><?php printf( __( 'Directory By: %s', DR_TEXT_DOMAIN ), "<span class='vcard'><a class='url fn n' href='" . get_option( 'siteurl' ) . $dr_author_url . "' title='" . esc_attr( $user_data->display_name ) . "' rel='me'>" . $user_data->display_name . "</a></span>" ); ?></h1>
+			<h1 class="page-title author"><?php printf( __( 'Eintrag von: %s', DR_TEXT_DOMAIN ), "<span class='vcard'><a class='url fn n' href='" . get_option( 'siteurl' ) . $dr_author_url . "' title='" . esc_attr( $user_data->display_name ) . "' rel='me'>" . $user_data->display_name . "</a></span>" ); ?></h1>
 
 			<?php
 			/* Since we called the_post() above, we need to

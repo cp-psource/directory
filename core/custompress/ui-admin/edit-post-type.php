@@ -1,4 +1,4 @@
-﻿<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
+﻿<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
 
 <?php
 if(is_network_admin()){
