@@ -3,7 +3,7 @@
 Plugin Name: Verzeichnis
 Plugin URI: https://n3rds.work/docs/verzeichnis
 Description: Verzeichnis - Erstelle eine vollständige Verzeichnis-Seite.
-Version: 2.2.8
+Version: 2.2.9
 Author: WMS N@W
 Author URI: https://n3rds.work
 Text Domain: dr_text_domain
@@ -45,7 +45,7 @@ $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 );
 
 // Define plugin version
-define( 'DR_VERSION', '2.2.6.5' );
+define( 'DR_VERSION', '2.2.9' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir
