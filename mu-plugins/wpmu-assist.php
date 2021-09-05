@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WPMU Assist
-Plugin URI: http://premium.wpmudev.org/project/classifieds
-Description: Allows single blog registration on Multisite. On registering from a blog other than the main site it saves the blog_id and sends the emails as the originating blog and on activation adds the user to the originating blog as well as the main blog.
+Plugin Name: PSOURCE Assist
+Plugin URI: https://n3rds.work/docs/verzeichnis
+Description: Ermöglicht die Registrierung eines einzelnen Blogs auf Multisite. Bei der Registrierung von einem anderen Blog als der Hauptseite wird die blog_id gespeichert und die E-Mails als Ursprungsblog gesendet und bei Aktivierung wird der Benutzer sowohl zum Ursprungsblog als auch zum Hauptblog hinzugefügt.
 Version: 1.0.2
-Author: Arnold Bailey (Incsub)
-Author URI: http://premium.wpmudev.org
+Author: DerN3rd (WMS N@W)
+Author URI: https://n3rds.work
 License: GNU General Public License (Version 2 - GPLv2)
 Network: true
 */

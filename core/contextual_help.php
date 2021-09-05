@@ -32,7 +32,7 @@ class DR_ContextualHelp {
 
 	private function _set_up_sidebar () {
 		$this->_dr_sidebar = '<h4>' . __( 'Directory', $this->text_domain ) . '</h4>';
-		if ( defined( 'WPMUDEV_REMOVE_BRANDING' ) && constant( 'WPMUDEV_REMOVE_BRANDING' ) ) {
+		if ( defined( 'PSOURCE_REMOVE_BRANDING' ) && constant( 'PSOURCE_REMOVE_BRANDING' ) ) {
 			$this->_dr_sidebar .= '<p>' . __( 'The Directory plugin transforming your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways.', $this->text_domain ) . '</p>';
 		} else {
 				$this->_dr_sidebar .= '<ul>' .

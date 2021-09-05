@@ -11,23 +11,23 @@ $options = $this->get_options('general');
 	<?php $this->render_admin( 'navigation', array( 'page' => 'directory_settings', 'tab' => 'capabilities' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-	<h1><?php _e( 'Capabilities Settings', $this->text_domain ); ?></h1>
+	<h1><?php _e( 'Einstellungen für Berechtigungen', $this->text_domain ); ?></h1>
 
 	<form action="#" method="post" class="dr-general" >
 		<div class="postbox">
-			<h3 class='hndle'><span><?php _e( 'Capabilities', $this->text_domain ) ?></span></h3>
+			<h3 class='hndle'><span><?php _e( 'Fähigkeiten', $this->text_domain ) ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<label for="roles"><?php _e( 'Assign Capabilities', $this->text_domain ) ?></label>
+							<label for="roles"><?php _e( 'Funktionen zuweisen', $this->text_domain ) ?></label>
 							<img id="ajax-loader" alt="ajax-loader" src="<?php echo $this->plugin_url . 'ui-admin/images/ajax-loader.gif'; ?>" />
 						</th>
 						<td>
 							<select id="roles" name="roles">
 							<?php wp_dropdown_roles('administrator'); ?>
 							</select>
-							<br /><span class="description"><?php _e('Select a role to which you want to assign Directory capabilities.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('Wähle eine Rolle aus, der Du Verzeichnisfunktionen zuweisen möchtest.', $this->text_domain); ?></span>
 
 							<br /><br />
 
@@ -50,7 +50,7 @@ $options = $this->get_options('general');
 			<?php wp_nonce_field('verify'); ?>
 			<input type="hidden" name="action" value="dr_save" />
 			<input type="hidden" name="key" value="general" />
-			<input type="submit" class="button-primary" name="save" value="Save this Roles Changes">
+			<input type="submit" class="button-primary" name="save" value="Diese Rollenänderungen speichern">
 		</p>
 
 	</form>

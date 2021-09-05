@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Gateway Relay
-Plugin URI: http://premium.wpmudev.org/project/classifieds
-Description: Forwards IPN from Paypal and Silent Posts from Authorizenet to multiple new urls based on a prefix in certain fields.
+Plugin URI: https://n3rds.work/docs/verzeichnis
+Description: Leitet IPN von Paypal und Silent Posts von Authorizenet an mehrere neue URLs basierend auf einem Präfix in bestimmten Feldern weiter.
 Version: 1.0
-Author: Arnold Bailey (Incsub)
-Author URI: http://premium.wpmudev.org
+Author: DerN3rd (WMS N@W)
+Author URI: https://n3rds.work
 License: GNU General Public License (Version 2 - GPLv2)
 Network: true
 */
