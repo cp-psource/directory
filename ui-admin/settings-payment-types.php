@@ -34,22 +34,22 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 	<?php $this->render_admin( 'navigation', array( 'page' => 'directory_settings','tab' => 'payment-types' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-	<h1><?php _e( 'Payments Types', $this->text_domain ); ?></h1>
+	<h1><?php _e( 'Zahlungsarten', $this->text_domain ); ?></h1>
 	<form id="payment_type" action="#" method="post" class="dp-payments">
 
 		<div id="gateways" class="postbox">
-			<h3 class='hndle'><span><?php _e( 'Payment Gateway Settings', $this->text_domain ) ?></span></h3>
+			<h3 class='hndle'><span><?php _e( 'Zahlungs-Gateway-Einstellungen', $this->text_domain ) ?></span></h3>
 			<div class="inside">
 
 				<table class="form-table">
 					<tr>
-						<th scope="row"><?php _e( 'Select Payment Gateway(s)', $this->text_domain ) ?></th>
+						<th scope="row"><?php _e( 'Zahlungsgateway(s) auswählen', $this->text_domain ) ?></th>
 						<td>
 							<p>
 								<label>
 									<input type="checkbox" class="cf_allowed_gateways" name="use_free" id="use_free" value="1" <?php checked( ! empty($options['use_free']) ); ?> />
-									<?php _e( 'Free Listings', $this->text_domain ) ?>
-									<span class="description"><?php _e( '(logged users can create listings for free).', $this->text_domain ); ?></span>
+									<?php _e( 'Kostenlose Einträge', $this->text_domain ) ?>
+									<span class="description"><?php _e( '(angemeldete Benutzer können kostenlos Inserate erstellen).', $this->text_domain ); ?></span>
 								</label>
 							</p>
 							<p>
@@ -81,17 +81,17 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 		else:
 		?>
 		<div id="pane_paypal" class="postbox" >
-			<h3 class='hndle'><span><?php _e( 'PayPal Settings', $this->text_domain ) ?></span></h3>
+			<h3 class='hndle'><span><?php _e( 'PayPal-Einstellungen', $this->text_domain ) ?></span></h3>
 			<div class="inside">
 				<p class="description">
-					<?php _e( "Express Checkout is PayPal's premier checkout solution, which streamlines the checkout process for buyers and keeps them on your site after making a purchase. Unlike PayPal Pro, there are no additional fees to use Express Checkout, though you may need to do a free upgrade to a business account.", $this->text_domain ) ?>
-					<a href="https://cms.paypal.com/us/cgi-bin/?&amp;cmd=_render-content&amp;content_ID=developer/e_howto_api_ECGettingStarted" target="_blank"><?php _e( 'More Info', $this->text_domain ) ?></a>
+					<?php _e( "Express Checkout ist die führende Checkout-Lösung von PayPal, die den Checkout-Prozess für Käufer optimiert und sie nach dem Kauf auf Deiner Webseite hält. Im Gegensatz zu PayPal Pro fallen für die Nutzung von Express Checkout keine zusätzlichen Gebühren an, obwohl Du möglicherweise ein kostenloses Upgrade auf ein Geschäftskonto durchführen musst.", $this->text_domain ) ?>
+					<a href="https://cms.paypal.com/us/cgi-bin/?&amp;cmd=_render-content&amp;content_ID=developer/e_howto_api_ECGettingStarted" target="_blank"><?php _e( 'Mehr Info', $this->text_domain ) ?></a>
 				</p>
 
 				<table class="form-table">
 					<tr>
 						<th>
-							<label for="api_url"><?php _e('PayPal API Calls URL', $this->text_domain ) ?></label>
+							<label for="api_url"><?php _e('URL für PayPal-API-Aufrufe', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<?php $api_url = (empty($paypal['api_url']) ? 'sandbox' : $paypal['api_url'] )?>
@@ -99,57 +99,57 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 								<option value="sandbox" <?php selected($api_url == 'sandbox' ); ?>><?php _e( 'Sandbox', $this->text_domain ); ?></option>
 								<option value="live"    <?php selected($api_url == 'live' ); ?>><?php _e( 'Live', $this->text_domain ); ?></option>
 							</select>
-							<br /><span class="description"><?php _e( 'Choose between PayPal Sandbox and PayPal Live.', $this->text_domain ); ?></span>
+							<br /><span class="description"><?php _e( 'Wähle zwischen PayPal Sandbox und PayPal Live.', $this->text_domain ); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="business_email"><?php _e( 'PayPal Business Email', $this->text_domain ) ?></label>
+							<label for="business_email"><?php _e( 'PayPal-Geschäfts-E-Mail', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<input type="text" id="business_email" name="paypal[business_email]" value="<?php echo ( empty( $paypal['business_email'] ) ) ? '' : $paypal['business_email']; ?>" size="50" />
-							<br /><span class="description"><?php _e( 'Your PayPal business email for Recurring Payments.', $this->text_domain ); ?></span>
+							<br /><span class="description"><?php _e( 'Deine PayPal-Geschäfts-E-Mail für wiederkehrende Zahlungen.', $this->text_domain ); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="api_username"><?php _e( 'API Username', $this->text_domain ) ?></label>
+							<label for="api_username"><?php _e( 'API-Benutzername', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<p>
 								<span class="description">
-									<?php _e( 'You must login to PayPal and create an API signature to get your credentials. ', $this->text_domain ) ?>
-									<a href="https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&amp;content_ID=developer/e_howto_api_ECAPICredentials" target="_blank"><?php _e( 'Instructions', $this->text_domain ) ?></a>
+									<?php _e( 'Du musst Dich bei PayPal anmelden und eine API-Signatur erstellen, um Deine Zugangsdaten zu erhalten. ', $this->text_domain ) ?>
+									<a href="https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&amp;content_ID=developer/e_howto_api_ECAPICredentials" target="_blank"><?php _e( 'Anweisungen', $this->text_domain ) ?></a>
 								</span>
 							</p>
 							<input type="text" id="api_username" name="paypal[api_username]" value="<?php echo (empty($paypal['api_username']) ) ? '' : $paypal['api_username']; ?>" size="50"/>
-							<br /><span class="description"><?php _e( 'Your PayPal API Username.', $this->text_domain ); ?></span>
+							<br /><span class="description"><?php _e( 'Dein PayPal-API-Benutzername.', $this->text_domain ); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="api_password"><?php _e( 'API Password', $this->text_domain ) ?></label>
+							<label for="api_password"><?php _e( 'API Passwort', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<input type="text" id="api_password" name="paypal[api_password]" value="<?php echo (empty($paypal['api_password']) ) ? '' : $paypal['api_password']; ?>" size="50" />
-							<br /><span class="description"><?php _e( 'Your PayPal API Password.', $this->text_domain ); ?></span>
+							<br /><span class="description"><?php _e( 'Dein PayPal-API-Passwort.', $this->text_domain ); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="api_signature"><?php _e( 'API Signature', $this->text_domain ) ?></label>
+							<label for="api_signature"><?php _e( 'API Signatur', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<textarea rows="1" cols="55" id="api_signature" name="paypal[api_signature]"><?php echo (empty($paypal['api_signature']) ) ? '' : $paypal['api_signature']; ?></textarea>
-							<br /><span class="description"><?php _e( 'Your PayPal API Signature.', $this->text_domain ); ?></span>
+							<br /><span class="description"><?php _e( 'Deine PayPal API-Signatur.', $this->text_domain ); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="currency"><?php _e( 'Currency', $this->text_domain ) ?></label>
+							<label for="currency"><?php _e( 'Währung', $this->text_domain ) ?></label>
 						</th>
 						<td>
-							<?php $currency = (empty($paypal['currency']) ? 'USD' : $paypal['currency']); ?>
+							<?php $currency = (empty($paypal['currency']) ? 'EUR' : $paypal['currency']); ?>
 							<select id="currency" name="paypal[currency]" style="width:100px">
 								<option value="USD" <?php selected( $currency == 'USD' ); ?>><?php _e( 'U.S. Dollar', $this->text_domain ) ?></option>
 								<option value="EUR" <?php selected( $currency == 'EUR' ); ?>><?php _e( 'Euro', $this->text_domain ) ?></option>
@@ -167,25 +167,25 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 								<option value="HUF" <?php selected( $currency == 'HUF' ); ?>><?php _e( 'Hungarian Forint', $this->text_domain ) ?></option>
 								<option value="PLN" <?php selected( $currency == 'PLN' ); ?>><?php _e( 'Polish Zloty', $this->text_domain ) ?></option>
 							</select>
-							<br /><span class="description"><?php _e( 'The currency in which you want to process payments.', $this->text_domain ); ?></span>
+							<br /><span class="description"><?php _e( 'Die Währung, in der Du Zahlungen abwickeln möchtest.', $this->text_domain ); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="pp_payment_url"><?php _e( 'Redirect URL on Success:', $this->text_domain ) ?></label>
+							<label for="pp_payment_url"><?php _e( 'Weiterleitungs-URL bei Erfolg:', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<input type="text" name="paypal[payment_url]" id="pp_payment_url" value="<?php echo (empty($paypal['payment_url']) ) ? '' : $paypal['payment_url']; ?>" size="50" />
-							<br /><span class="description"><?php _e( 'by default to internal success page', $this->text_domain ) ?></span>
+							<br /><span class="description"><?php _e( 'standardmäßig zur internen Erfolgsseite', $this->text_domain ) ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="pp_cancel_url"><?php _e( 'Redirect URL on Cancel:', $this->text_domain ) ?></label>
+							<label for="pp_cancel_url"><?php _e( 'Weiterleitungs-URL bei Abbrechen:', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<input type="text" name="paypal[cancel_url]" id="pp_cancel_url" value="<?php echo (empty($paypal['cancel_url']) ) ? '' : $paypal['cancel_url']; ?>" size="50" />
-							<br /><span class="description"><?php _e( 'by default to Home page', $this->text_domain ) ?></span>
+							<br /><span class="description"><?php _e( 'standardmäßig zur Startseite', $this->text_domain ) ?></span>
 						</td>
 					</tr>
 				</table>
@@ -203,12 +203,12 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 		?>
 		<!-- **Authorize.Net** -->
 		<div id="pane_authorizenet" class="postbox" <?php if( empty($options['use_authorizenet']) ) echo 'style="display: none;"'; ?>>
-			<h3 class='hndle'><span><?php _e('Authorize.net AIM Settings', $this->text_domain); ?></span></h3>
+			<h3 class='hndle'><span><?php _e('Authorize.net AIM-Einstellungen', $this->text_domain); ?></span></h3>
 			<div class="inside">
-				<span class="description"><?php _e('Authorize.net AIM is a customizable payment processing solution that gives the merchant control over all the steps in processing a transaction. An SSL certificate is required to use this gateway. USD is the only currency supported by this gateway.', $this->text_domain) ?></span>
+				<span class="description"><?php _e('Authorize.net AIM ist eine anpassbare Zahlungsabwicklungslösung, die dem Händler die Kontrolle über alle Schritte bei der Verarbeitung einer Transaktion gibt. Zur Verwendung dieses Gateways ist ein SSL-Zertifikat erforderlich. USD ist die einzige Währung, die von diesem Gateway unterstützt wird.', $this->text_domain) ?></span>
 				<table class="form-table">
 					<tr>
-						<th scope="row"><?php _e('Mode', $this->text_domain) ?></th>
+						<th scope="row"><?php _e('Modus', $this->text_domain) ?></th>
 						<td>
 							<p>
 								<?php $mode = (empty($authorizenet['mode']) ? 'sandbox' : $authorizenet['mode']); ?>
@@ -324,7 +324,7 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 		<?php wp_nonce_field('verify'); ?>
 		<input type="hidden" name="key" value="payment_types" />
 		<p class="submit">
-			<input type="submit" class="button-primary" id="save" name="save" value="<?php _e( 'Save Changes', $this->text_domain ); ?>">
+			<input type="submit" class="button-primary" id="save" name="save" value="<?php _e( 'Änderungen speichern', $this->text_domain ); ?>">
 		</p>
 
 

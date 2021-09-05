@@ -41,9 +41,9 @@ $options = $this->get_options('payments');
 	<?php $this->render_admin( 'navigation', array( 'page' => 'directory_settings', 'tab' => 'payments' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-	<h1><?php _e( 'Payments Settings', $this->text_domain ); ?></h1>
+	<h1><?php _e( 'Zahlungseinstellungen', $this->text_domain ); ?></h1>
 	<p class="description">
-		<?php _e( 'Here you can set price that users should pay for capability the creation listings on your site. If you want that users can create listings for free, select "Free Listings" on the "Payments Type" page.', $this->text_domain ) ?>
+		<?php _e( 'Hier kannst Du den Preis festlegen, den Benutzer für die Fähigkeit zur Erstellung von Einträgen auf Deiner Webseite zahlen sollen. Wenn Du möchtest, dass Benutzer kostenlos Einträge erstellen können, wähle "Kostenlose Einträge" auf der Seite "Zahlungsart".', $this->text_domain ) ?>
 	</p>
 
 	<br />
