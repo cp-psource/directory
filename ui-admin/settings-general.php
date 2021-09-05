@@ -8,7 +8,7 @@ $default_email = __(
 Name: FROM_NAME
 Email: FROM_EMAIL
 Betreff: FROM_SUBJECT
-NAchricht:
+Nachricht:
 
 FROM_MESSAGE
 
@@ -333,7 +333,7 @@ Eintragslink: POST_LINK
 	<div class="postbox">
 		<h3 class='hndle'><span><?php _e( 'Erste-Schritte-Seite', $this->text_domain ) ?></span></h3>
 		<div class="inside">
-			<label for="show_getting_started-yes"><?php _e( 'Zeige &quot;Erste Schritted&quot; Seite, auch nachdem alle Schritte ausgeführt wurden:', $this->text_domain ) ?></label>
+			<label for="show_getting_started-yes"><?php _e( 'Zeige &quot;Erste Schritte&quot; Seite, auch nachdem alle Schritte ausgeführt wurden:', $this->text_domain ) ?></label>
 			
 			<label>
 				<input type="radio" value="1" id="show_getting_started-yes" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? false : ! empty($options['show_getting_started'] ) ); ?> />
