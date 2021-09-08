@@ -61,8 +61,8 @@ class Directory_Core_Admin extends Directory_Core {
 			remove_submenu_page('edit.php?post_type=directory_listing', 'post-new.php?post_type=directory_listing' );
 			add_submenu_page( 
 			'edit.php?post_type=directory_listing', 
-			__( 'Add New', $this->text_domain ), 
-			__( 'Add New', $this->text_domain ), 
+			__( 'Neuer Eintrag', $this->text_domain ), 
+			__( 'Neuer Eintrag', $this->text_domain ), 
 			'create_listings', 'listings_add', 
 			array( &$this, 'redirect_add' ) );
 		}
@@ -71,8 +71,8 @@ class Directory_Core_Admin extends Directory_Core {
 			
 			$menu_page = add_submenu_page( 
 			'edit.php?post_type=directory_listing', 
-			__( 'Getting Started', $this->text_domain ), 
-			__( 'Getting Started', $this->text_domain ), 
+			__( 'Erste Schritte', $this->text_domain ), 
+			__( 'Erste Schritte', $this->text_domain ), 
 			'manage_options', 
 			'dr-get_started', 
 			array( $this, 'create_getting_started_page' ) );
@@ -83,8 +83,8 @@ class Directory_Core_Admin extends Directory_Core {
 		
 		$settings_page = add_submenu_page( 
 		'edit.php?post_type=directory_listing', 
-		__( 'Directory Settings', $this->text_domain ), 
-		__( 'Settings', $this->text_domain ), 
+		__( 'Verzeichnis Einstellungen', $this->text_domain ), 
+		__( 'Einstellungen', $this->text_domain ), 
 		'create_users', //create_users so on multisite you can turn on and off Settings with the Admin add users switch
 		'directory_settings', array( &$this, 
 		'handle_settings_page_requests' ) );
@@ -95,8 +95,8 @@ class Directory_Core_Admin extends Directory_Core {
 		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
 			add_submenu_page( 
 			'edit.php?post_type=directory_listing', 
-			__( 'Directory Credits', $this->text_domain ), 
-			__( 'Credits', $this->text_domain ), 
+			__( 'Verzeichnis Guthaben', $this->text_domain ), 
+			__( 'Guthaben', $this->text_domain ), 
 			'read', 'directory_credits' , 
 			array( &$this, 'handle_credits_page_requests' ) );
 		}
@@ -301,8 +301,8 @@ class Directory_Core_Admin extends Directory_Core {
 				$name = sanitize_file_name($params['new_role']);
 				$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
 				$result = add_role($slug, $name, array('read' => true) );
-				if (empty($result) ) $this->message = __('ROLE ALREADY EXISTS' , $this->text_domain);
-				else $this->message = sprintf(__('New Role "%s" Added' , $this->text_domain), $name);
+				if (empty($result) ) $this->message = __('ROLLE BESTEHT BEREITS' , $this->text_domain);
+				else $this->message = sprintf(__('Neue Rolle "%s" hinzugefügt' , $this->text_domain), $name);
 			}
 
 			if ( isset( $params['remove_role'] ) ) {
@@ -353,10 +353,10 @@ class Directory_Core_Admin extends Directory_Core {
 						$transaction = new DR_Transactions($user->ID, $blog_id);
 						$transaction->credits += $credits;
 						unset($transaction);
-						$this->message = sprintf(__('User "%s" received %s credits to member\'s Directory account',$this->text_domain), $send_to_user, $credits);
+						$this->message = sprintf(__('Benutzer "%s" hat %s Credits für das Verzeichniskonto des Mitglieds erhalten',$this->text_domain), $send_to_user, $credits);
 
 					} else {
-						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this->text_domain), $send_to_user);
+						$this->message = sprintf(__('Benutzer "%s" nicht gefunden oder kein Verzeichnis-Mitglied',$this->text_domain), $send_to_user);
 					}
 				}
 
@@ -369,7 +369,7 @@ class Directory_Core_Admin extends Directory_Core {
 						$transaction->credits += $credits;
 						unset($transaction);
 					}
-					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this->text_domain), $credits);
+					$this->message = sprintf(__('Allen Benutzern wurden "%s" Credits zu ihren Konten hinzugefügt.',$this->text_domain), $credits);
 
 				}
 			} else {

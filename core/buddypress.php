@@ -73,7 +73,7 @@ if (!class_exists('Directory_Core_Buddypress')):
             if (0 < $directory_page->ID)
                 $nav_title = $directory_page->post_title;
             else
-                $nav_title = 'Directory';
+                $nav_title = 'Verzeichnis';
 
             //$slug = (bp_is_my_profile()) ? '/my-listings' : '/all';
             //$slug = $bp->directory->slug . $slug;
@@ -95,7 +95,7 @@ if (!class_exists('Directory_Core_Buddypress')):
                 if (0 < $directory_page->ID)
                     $nav_title = $directory_page->post_title;
                 else
-                    $nav_title = 'My Directory';
+                    $nav_title = 'Mein Verzeichnis';
 
                 bp_core_new_subnav_item(array(
                     'name' => __($nav_title, $this->text_domain),
@@ -109,7 +109,7 @@ if (!class_exists('Directory_Core_Buddypress')):
 
                 if ($this->use_credits && !$this->is_full_access()) {
                     bp_core_new_subnav_item(array(
-                        'name' => __('My Credits', $this->text_domain),
+                        'name' => __('Mein Guthaben', $this->text_domain),
                         'slug' => 'my-credits',
                         'parent_url' => $parent_url,
                         'parent_slug' => $bp->directory->slug,
@@ -121,7 +121,7 @@ if (!class_exists('Directory_Core_Buddypress')):
 
                 if (current_user_can('create_listings')) {
                     bp_core_new_subnav_item(array(
-                        'name' => __('Add Listing', $this->text_domain),
+                        'name' => __('Eintrag hinzufügen', $this->text_domain),
                         'slug' => 'add-listing',
                         'parent_url' => $parent_url,
                         'parent_slug' => $bp->directory->slug,
@@ -134,7 +134,7 @@ if (!class_exists('Directory_Core_Buddypress')):
             } else {
                 //display author classifids page
                 bp_core_new_subnav_item(array(
-                    'name' => __('All', $this->text_domain),
+                    'name' => __('Alle', $this->text_domain),
                     'slug' => 'all',
                     'parent_url' => $parent_url,
                     'parent_slug' => $bp->directory->slug,
@@ -192,7 +192,7 @@ if (!class_exists('Directory_Core_Buddypress')):
                 if (isset($_POST['action']) && 'delete_listing' == $_POST['action'] && wp_verify_nonce($_POST['_wpnonce'], 'action_verify')) {
                     if ($this->user_can_edit_listing($_POST['post_id'])) {
                         wp_delete_post($_POST['post_id']);
-                        wp_redirect(add_query_arg(array('updated' => 'true', 'dmsg' => urlencode(__('Listing is deleted!', $this->text_domain))), get_permalink($this->my_listings_page_id)));
+                        wp_redirect(add_query_arg(array('updated' => 'true', 'dmsg' => urlencode(__('Eintrag ist gelöscht!', $this->text_domain))), get_permalink($this->my_listings_page_id)));
                         exit;
                     }
                 }
@@ -234,9 +234,9 @@ if (!class_exists('Directory_Core_Buddypress')):
                             $this->js_redirect(trailingslashit($bp->loggedin_user->domain) . $this->directory_page_slug . '/' . $this->my_listings_page_slug);
 
                             if (is_page($this->add_listing_page_id)) {
-                                wp_redirect(add_query_arg(array('updated' => 'true', 'dmsg' => urlencode(__('New Listing is added!', $this->text_domain))), get_permalink($this->my_listings_page_id)));
+                                wp_redirect(add_query_arg(array('updated' => 'true', 'dmsg' => urlencode(__('Neuer Eintrag wurde hinzugefügt!', $this->text_domain))), get_permalink($this->my_listings_page_id)));
                             } else {
-                                wp_redirect(add_query_arg(array('updated' => 'true', 'dmsg' => urlencode(__('Listing is updated!', $this->text_domain))), get_permalink($this->my_listings_page_id)));
+                                wp_redirect(add_query_arg(array('updated' => 'true', 'dmsg' => urlencode(__('Eintrag ist aktualisiert!', $this->text_domain))), get_permalink($this->my_listings_page_id)));
                             }
                             exit;
 
@@ -248,7 +248,7 @@ if (!class_exists('Directory_Core_Buddypress')):
                             set_query_var('dr_post_id', $post_id);
                             /* Set the proper step which will be loaded by "page-my-listings.php" */
                             set_query_var('dr_action', 'edit');
-                            $error = __('You do not have enough credits to publish your listing. Please purchase more credits. Your Listing has been saved as a Draft.', $this->text_domain);
+                            $error = __('Du hast nicht genügend Credits, um Deinen Eintrag zu veröffentlichen. Bitte kaufe mehr Credits. Dein Eintrag wurde als Entwurf gespeichert.', $this->text_domain);
                             set_query_var('dr_error', $error);
                             $this->render_front('update-listing', array('dr_error' => $error));
                         }
@@ -553,9 +553,9 @@ if (!class_exists('Directory_Core_Buddypress')):
         {
             if (!$silent):
                 ?>
-                <p><?php _e('You are being redirected. Please wait.', $this->text_domain); ?></p>
+                <p><?php _e('Du wirst weitergeleitet. Warte bitte...', $this->text_domain); ?></p>
                 <img src="<?php echo $this->plugin_url . '/ui-front/general/images/loader.gif'; ?>"
-                     alt="<?php _e('You are being redirected. Please wait.', $this->text_domain); ?>"/>
+                     alt="<?php _e('Du wirst weitergeleitet. Warte bitte...', $this->text_domain); ?>"/>
             <?php endif; ?>
             <script type="text/javascript">//<![CDATA[
                 window.location = '<?php echo $url; ?>';	//]]>
