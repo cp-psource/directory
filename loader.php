@@ -21,7 +21,7 @@ $plugin_header_translate = array(
         /*
 
 Authors - DerN3rd
-Copyright 2021 WMS N@W, (https://n3rds.work)
+Copyright 2021-204 WMS N@W, (https://n3rds.work)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -37,13 +37,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-require 'psource-plugin-update/plugin-update-checker.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=directory', 
 	__FILE__, 
 	'directory' 
 );
-
 // Define plugin version
 define( 'DR_VERSION', '2.2.9' );
 // define the plugin folder url

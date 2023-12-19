@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!');
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
 //var_dump($this->all_capabilities('jbp_job') );
 
@@ -29,34 +29,34 @@ $this->render_admin('update-message');
 
 
 <form action="#" method="post" class="ct-form-single-btn">
-	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php esc_attr_e('Add Post Type', $this->text_domain); ?>" />
+	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php esc_attr_e('Beitragstyp hinzufügen', $this->text_domain); ?>" />
 </form>
 
 <table class="widefat">
 	<thead>
 		<tr>
-			<th><?php esc_html_e('Post Type', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Beitragstyp', $this->text_domain); ?></th>
 			<th><?php esc_html_e('Name', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Description', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Menu Icon', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Supports', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Capability Type', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Public', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Hierarchical', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Rewrite', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Beschreibung', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Menü Icon', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Unterstützt', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Berechtigungstyp', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Öffentlich', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Hierarchisch', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Umschreiben', $this->text_domain); ?></th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th><?php esc_html_e('Post Type', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Beitragstyp', $this->text_domain); ?></th>
 			<th><?php esc_html_e('Name', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Description', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Menu Icon', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Supports', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Capability Type', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Public', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Hierarchical', $this->text_domain); ?></th>
-			<th><?php esc_html_e('Rewrite', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Beschreibung', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Menü Icon', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Unterstützt', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Berechtigungstyp', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Öffentlich', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Hierarchisch', $this->text_domain); ?></th>
+			<th><?php esc_html_e('Umschreiben', $this->text_domain); ?></th>
 		</tr>
 	</tfoot>
 	<tbody>
@@ -80,27 +80,27 @@ $this->render_admin('update-message');
 				</strong>
 				<div class="row-actions" id="row-actions-<?php echo $name; ?>">
 					<?php if($flag): ?>
-					<span class="description"><?php esc_html_e('Edit in Network Admin.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('In Netzwerkadministration bearbeiten.', $this->text_domain); ?></span>
 					<?php else: ?>
 					<span class="edit">
-						<a title="<?php esc_attr_e('Edit the post type', $this->text_domain); ?>" href="<?php echo esc_url(self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ) ); ?>"><?php esc_html_e('Edit', $this->text_domain); ?></a> |
+						<a title="<?php esc_attr_e('Bearbeiten Sie den Beitragstyp', $this->text_domain); ?>" href="<?php echo esc_url(self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ) ); ?>"><?php esc_html_e('Bearbeiten', $this->text_domain); ?></a> |
 					</span>
 					<span class="trash">
-						<a class="submitdelete" href="#" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php esc_html_e('Delete', $this->text_domain); ?></a>
+						<a class="submitdelete" href="#" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php esc_html_e('Löschen', $this->text_domain); ?></a>
 					</span>
 					<?php endif; ?>
 				</div>
 				<form action="#" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
 					<?php wp_nonce_field('delete_post_type'); ?>
 					<input type="hidden" name="post_type_name" value="<?php echo( $name ); ?>" />
-					<input type="submit" class="button confirm" value="<?php esc_attr_e( 'Confirm', $this->text_domain ); ?>" name="submit" />
-					<input type="submit" class="button cancel"  value="<?php esc_attr_e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
+					<input type="submit" class="button confirm" value="<?php esc_attr_e( 'Bestätigen', $this->text_domain ); ?>" name="submit" />
+					<input type="submit" class="button cancel"  value="<?php esc_attr_e( 'Abbrechen', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
 				</form>
 			</td>
 			<td><?php echo ( empty( $post_type['labels']['name'] ) ) ? '' : esc_html( $post_type['labels']['name'] ); ?></td>
 			<td><?php echo ( empty( $post_type['description'] ) ) ? '' : esc_html( $post_type['description'] ); ?></td>
 			<td>
-				<img src="<?php echo esc_html(empty( $post_type['menu_icon'] ) ) ? $this->plugin_url . 'ui-admin/images/default-menu-icon.png' : $post_type['menu_icon']; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'No Icon'); ?>" />
+				<img src="<?php echo esc_html(empty( $post_type['menu_icon'] ) ) ? $this->plugin_url . 'ui-admin/images/default-menu-icon.png' : $post_type['menu_icon']; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'Kein Icon'); ?>" />
 			</td>
 			<td class="ct-supports">
 				<?php foreach ( $post_type['supports'] as $value ): ?>
@@ -110,25 +110,25 @@ $this->render_admin('update-message');
 			<td><?php echo( $post_type['capability_type'] ); ?></td>
 			<td class="ct-tf-icons-wrap">
 				<?php if ( isset( $post_type['public'] ) && $post_type['public'] === NULL ): ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/advanced.png'; ?>" alt="<?php esc_attr_e('Advanced', $this->text_domain); ?>" title="<?php esc_attr_e('Advanced', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/advanced.png'; ?>" alt="<?php esc_attr_e('Erweitert', $this->text_domain); ?>" title="<?php esc_attr_e('Erweitert', $this->text_domain); ?>" />
 				<?php elseif ( isset( $post_type['public'] ) ): ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/true.png'; ?>" alt="<?php esc_attr_e('True', $this->text_domain); ?>" title="<?php esc_attr_e('True', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/true.png'; ?>" alt="<?php esc_attr_e('Wahr', $this->text_domain); ?>" title="<?php esc_attr_e('Wahr', $this->text_domain); ?>" />
 				<?php else: ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/false.png'; ?>" alt="<?php esc_attr_e('False', $this->text_domain); ?>" title="<?php esc_attr_e('False', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/false.png'; ?>" alt="<?php esc_attr_e('Falsch', $this->text_domain); ?>" title="<?php esc_attr_e('Falsch', $this->text_domain); ?>" />
 				<?php endif; ?>
 			</td>
 			<td class="ct-tf-icons-wrap">
 				<?php if ( $post_type['hierarchical'] ): ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/true.png'; ?>" alt="<?php esc_attr_e('True', $this->text_domain); ?>" title="<?php esc_attr_e('True', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/true.png'; ?>" alt="<?php esc_attr_e('Wahr', $this->text_domain); ?>" title="<?php esc_attr_e('Wahr', $this->text_domain); ?>" />
 				<?php else: ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/false.png'; ?>" alt="<?php esc_attr_e('False', $this->text_domain); ?>" title="<?php esc_attr_e('False', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/false.png'; ?>" alt="<?php esc_attr_e('Falsch', $this->text_domain); ?>" title="<?php esc_attr_e('Falsch', $this->text_domain); ?>" />
 				<?php endif; ?>
 			</td>
 			<td class="ct-tf-icons-wrap">
 				<?php if ( $post_type['rewrite'] ): ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/true.png'; ?>" alt="<?php esc_attr_e('True', $this->text_domain); ?>" title="<?php esc_attr_e('True', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/true.png'; ?>" alt="<?php esc_attr_e('Wahr', $this->text_domain); ?>" title="<?php esc_attr_e('Wahr', $this->text_domain); ?>" />
 				<?php else: ?>
-				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/false.png'; ?>" alt="<?php esc_attr_e('False', $this->text_domain); ?>" title="<?php esc_attr_e('False', $this->text_domain); ?>" />
+				<img class="ct-tf-icons" src="<?php echo $this->plugin_url . 'ui-admin/images/false.png'; ?>" alt="<?php esc_attr_e('Falsch', $this->text_domain); ?>" title="<?php esc_attr_e('Falsch', $this->text_domain); ?>" />
 				<?php endif; ?>
 			</td>
 		</tr>
@@ -140,5 +140,5 @@ $this->render_admin('update-message');
 </table>
 
 <form action="#" method="post" class="ct-form-single-btn">
-	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php esc_attr_e('Add Post Type', $this->text_domain); ?>" />
+	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php esc_attr_e('Beitragstyp hinzufügen', $this->text_domain); ?>" />
 </form>

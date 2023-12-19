@@ -4,8 +4,8 @@
 * CustomPress_Core_Admin
 *
 * @uses CustomPress_Core
-* @copyright Incsub 2007-2011 {@link http://incsub.com}
-* @author Ivan Shaovchev (Incsub), Arnold Bailey (Incsub)
+* @copyright WMS N@W 2020 {@link https://n3rds.work}
+* @author DerN3rd (WMS N@W)
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 
@@ -134,13 +134,13 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		add_menu_page( __('CustomPress', $this->text_domain), __('CustomPress', $this->text_domain), 'activate_plugins', $menu_slug, array( &$this, $menu_callback ) );
 
 		if ( $this->enable_subsite_content_types || !is_multisite() ) {
-			$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), 'activate_plugins', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
+			$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Inhaltstypen', $this->text_domain ), __( 'Inhaltstypen', $this->text_domain ), 'activate_plugins', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
 
 			add_action( 'admin_print_scripts-' . $page_content_types, array( &$this, 'enqueue_scripts' ) );
 		}
 
-		$page_settings = add_submenu_page( $menu_slug, __('Settings', $this->text_domain), __('Settings', $this->text_domain), 'activate_plugins', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
-		$export_settings = add_submenu_page( $menu_slug, __('Export / Import', $this->text_domain), __('Export / Import', $this->text_domain), 'manage_options', 'ct_export', array( &$this, 'handle_export' ) );
+		$page_settings = add_submenu_page( $menu_slug, __('Einstellungen', $this->text_domain), __('Einstellungen', $this->text_domain), 'activate_plugins', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
+		$export_settings = add_submenu_page( $menu_slug, __('Export/Import', $this->text_domain), __('Export/Import', $this->text_domain), 'manage_options', 'ct_export', array( &$this, 'handle_export' ) );
 
 		add_action( 'admin_print_scripts-' . $page_settings, array( &$this, 'enqueue_settings_scripts' ) );
 		add_action( 'admin_print_scripts-' . $export_settings, array( &$this, 'enqueue_scripts' ) );
@@ -156,10 +156,10 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 	function network_admin_menu() {
 		add_menu_page( __('CustomPress', $this->text_domain), __('CustomPress', $this->text_domain), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
 
-		$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
-		$page_settings      = add_submenu_page( 'ct_content_types', __('Settings', $this->text_domain), __('Settings', $this->text_domain), 'manage_network', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
+		$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Inhaltstypen', $this->text_domain ), __( 'Inhaltstypen', $this->text_domain ), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
+		$page_settings      = add_submenu_page( 'ct_content_types', __('Einstellungen', $this->text_domain), __('Einstellungen', $this->text_domain), 'manage_network', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
 
-		$export_settings = add_submenu_page( 'ct_content_types', __('Export / Import', $this->text_domain), __('Export / Import', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
+		$export_settings = add_submenu_page( 'ct_content_types', __('Export/Import', $this->text_domain), __('Export/Import', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
 
 		add_action( 'admin_print_scripts-' . $page_content_types, array( &$this, 'enqueue_scripts' ) );
 		add_action( 'admin_print_scripts-' . $page_settings, array( &$this, 'enqueue_settings_scripts' ) );
@@ -229,8 +229,8 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
 			// Set network-wide content types
 			if ( is_multisite() && is_super_admin() && is_network_admin() ) {
-				update_site_option( 'allow_per_site_content_types', (bool) $params['enable_subsite_content_types'] );
-				update_site_option( 'display_network_content_types', (bool) $params['display_network_content_types'] );
+				update_site_option( 'allow_per_site_content_types', ! empty( $params['enable_subsite_content_types'] ) );
+				update_site_option( 'display_network_content_types', ! empty( $params['display_network_content_types'] ) );
 			}
 
 			// Create template file
@@ -424,6 +424,8 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'rewrite'             => (bool) $params['rewrite'],
 				'query_var'           => (bool) $params['query_var'],
 				'can_export'          => (bool) $params['can_export'],
+				'show_in_rest'        => (bool) $params['show_in_rest'],
+				'rest_base'           => empty( $params['rest_base'] ) ? strtolower( $params['post_type'] ) : $params['rest_base'],
 				'cf_columns'          => isset( $params['cf_columns'] ) ? $params['cf_columns'] : '',
 				);
 				
@@ -559,7 +561,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'query_var'			=> false,
 		);
 		$params = apply_filters( 'handle_taxonomy_requests_params', wp_parse_args( $params, $defaults ) );
-		
+
 		// If valid add/edit taxonomy request is made
 		if (   isset( $params['submit'] )
 		&& isset( $params['_wpnonce'] )
@@ -572,38 +574,40 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			if ( $valid_taxonomy && $valid_object_type ) {
 				// Construct args
 				$labels = array(
-				'name'                       => $params['labels']['name'],
-				'singular_name'              => $params['labels']['singular_name'],
-				'add_new_item'               => $params['labels']['add_new_item'],
-				'new_item_name'              => $params['labels']['new_item_name'],
-				'edit_item'                  => $params['labels']['edit_item'],
-				'update_item'                => $params['labels']['update_item'],
-				'search_items'               => $params['labels']['search_items'],
-				'popular_items'              => $params['labels']['popular_items'],
-				'all_items'                  => $params['labels']['all_items'],
-				'parent_item'                => $params['labels']['parent_item'],
-				'parent_item_colon'          => $params['labels']['parent_item_colon'],
-				'add_or_remove_items'        => $params['labels']['add_or_remove_items'],
-				'separate_items_with_commas' => $params['labels']['separate_items_with_commas'],
-				'choose_from_most_used'      => $params['labels']['choose_from_most_used']
+					'name'                       => $params['labels']['name'],
+					'singular_name'              => $params['labels']['singular_name'],
+					'add_new_item'               => $params['labels']['add_new_item'],
+					'new_item_name'              => $params['labels']['new_item_name'],
+					'edit_item'                  => $params['labels']['edit_item'],
+					'update_item'                => $params['labels']['update_item'],
+					'search_items'               => $params['labels']['search_items'],
+					'popular_items'              => $params['labels']['popular_items'],
+					'all_items'                  => $params['labels']['all_items'],
+					'parent_item'                => $params['labels']['parent_item'],
+					'parent_item_colon'          => $params['labels']['parent_item_colon'],
+					'add_or_remove_items'        => $params['labels']['add_or_remove_items'],
+					'separate_items_with_commas' => $params['labels']['separate_items_with_commas'],
+					'choose_from_most_used'      => $params['labels']['choose_from_most_used']
 				);
 
 				$args = array(
-				'labels'              => $labels,
-				'public'              => (bool) $params['public'] ,
-				'show_ui'             => ( isset( $params['show_ui'] ) ) ? (bool) $params['show_ui'] : null,
-				'show_tagcloud'       => ( isset( $params['show_tagcloud'] ) ) ? (bool) $params['show_tagcloud'] : null,
-				'show_admin_column'   => ( isset( $params['show_admin_column'] ) ) ? (bool) $params['show_admin_column'] : null,
-				'show_in_nav_menus'   => ( isset( $params['show_in_nav_menus'] ) ) ? (bool) $params['show_in_nav_menus'] : null,
-				'hierarchical'        => (bool) $params['hierarchical'],
-				'rewrite'             => (bool) $params['rewrite'],
-				'query_var'           => (bool) $params['query_var'],
-				'capabilities'        => array (
-				'manage_terms' => 'manage_categories',
-				'edit_terms'   => 'manage_categories',
-				'delete_terms' => 'manage_categories',
-				'assign_terms' => 'edit_posts',
-				),
+					'labels'              => $labels,
+					'public'              => (bool) $params['public'] ,
+					'show_ui'             => ( isset( $params['show_ui'] ) ) ? (bool) $params['show_ui'] : null,
+					'show_tagcloud'       => ( isset( $params['show_tagcloud'] ) ) ? (bool) $params['show_tagcloud'] : null,
+					'show_admin_column'   => ( isset( $params['show_admin_column'] ) ) ? (bool) $params['show_admin_column'] : null,
+					'show_in_nav_menus'   => ( isset( $params['show_in_nav_menus'] ) ) ? (bool) $params['show_in_nav_menus'] : null,
+					'hierarchical'        => (bool) $params['hierarchical'],
+					'rewrite'             => (bool) $params['rewrite'],
+					'query_var'           => (bool) $params['query_var'],
+					'capabilities'        => array (
+						'manage_terms' => 'manage_categories',
+						'edit_terms'   => 'manage_categories',
+						'delete_terms' => 'manage_categories',
+						'assign_terms' => 'edit_posts',
+					),
+					'show_in_rest'        => (bool) $params['show_in_rest'],
+					'rest_base'           => empty( $params['rest_base'] ) ? strtolower( $params['taxonomy'] ) : $params['rest_base']
 				);
 
 				// Remove empty values from labels so we can use the defaults
@@ -737,7 +741,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
 		//$params is the $_POST variable with slashes stripped
 		$params = array_map('stripslashes_deep',$_POST);
-		
+
 		$defaults = array(
 				'field_title'          => '',
 				'field_wp_allow'       => 0,
@@ -757,7 +761,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'field_id'             => '',
 		);
 		$params = apply_filters( 'handle_custom_field_requests_params', wp_parse_args( $params, $defaults ) );
-		
+
 		// If valid add/edit custom field request is made
 		if ( isset( $params['submit'] )
 		&& isset( $params['_wpnonce'] )
@@ -812,6 +816,16 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			// Unset if there are no options to be stored in the db
 			if ( $args['field_type'] == 'text' || $args['field_type'] == 'textarea'){
 				unset( $args['field_options'] );
+			}elseif( $args['field_type'] == 'datepicker' ){
+				if( ! empty( $args['field_date_format'] ) ){
+					$special_formats = ct_get_special_date_formats();
+					if ( isset( $special_formats[ $args['field_date_format'] ] ) ) {
+						$args['field_return_format']       = $args['field_date_format'];
+						$args['field_special_date_format'] = $special_formats[ $args['field_date_format'] ];
+					} else {
+						$args['field_return_format'] = ct_convert_date_to_php( $args['field_date_format'] );
+					}
+				}
 			} else {
 				//regex on text only
 				unset( $args['field_regex'] );
@@ -866,21 +880,26 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			$cf_columns_update = 0;
 			foreach ( $custom_fields[$params['custom_field_id']]['object_type'] as $object_type ) {
 
-				if ( is_array( $this->network_post_types[$object_type]['cf_columns'] ) )
-				if( is_network_admin() ){
-					foreach ( $this->network_post_types[$object_type]['cf_columns'] as $key => $value )
-					if ( $params['custom_field_id'] == $key ) {
-						unset( $this->network_post_types[$object_type]['cf_columns'][$key] );
-						$cf_columns_update = 1;
-					}
-				} else {
-					if ( is_array( $this->post_types[$object_type]['cf_columns'] ) )
-					foreach ( $this->post_types[$object_type]['cf_columns'] as $key => $value )
-					if ( $params['custom_field_id'] == $key ) {
-						unset( $this->post_types[$object_type]['cf_columns'][$key] );
-						$cf_columns_update = 1;
+				if ( isset( $this->network_post_types[ $object_type ]['cf_columns'] ) && is_array( $this->network_post_types[ $object_type ]['cf_columns'] ) ) {
+					if ( is_network_admin() ) {
+						foreach ( $this->network_post_types[ $object_type ]['cf_columns'] as $key => $value ) {
+							if ( $params['custom_field_id'] == $key ) {
+								unset( $this->network_post_types[ $object_type ]['cf_columns'][ $key ] );
+								$cf_columns_update = 1;
+							}
+						}
+					} else {
+						if ( is_array( $this->post_types[ $object_type ]['cf_columns'] ) ) {
+							foreach ( $this->post_types[ $object_type ]['cf_columns'] as $key => $value ) {
+								if ( $params['custom_field_id'] == $key ) {
+									unset( $this->post_types[ $object_type ]['cf_columns'][ $key ] );
+									$cf_columns_update = 1;
+								}
+							}
+						}
 					}
 				}
+				
 			}
 
 			if ( 1 == $cf_columns_update ) {
