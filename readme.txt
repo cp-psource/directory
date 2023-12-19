@@ -1,7 +1,7 @@
-=== Directory ===
-Contributors: ivanshaovchev
+=== Verzeichnis ===
+Contributors: DerN3rd
 Tags: directory, paypal, post types, taxonomies, custom fields,
-Requires at least: 3.3.0
+Requires at least: 4.9.0
 Tested up to: 3.3.2
 Stable tag: 2.1
 
