@@ -1,68 +1,108 @@
 === Verzeichnis ===
 Contributors: DerN3rd
+Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
 Tags: directory, paypal, post types, taxonomies, custom fields,
 Requires at least: 4.9.0
-Tested up to: 3.3.2
-Stable tag: 2.1
+Tested up to: 5.0.0
+Stable tag: 2.2.9
 
-The Directory plugin lets you create full blown directory website.
+Mit dem Verzeichnis-Plugin kannst Du eine vollständige Verzeichnis-Webseite erstellen.
 
 == Description ==
 
-The “Directory” plugin gives you the ability to create a full blown directory
-site. At its core it uses the “Content Types” submodule introduced with
-CustomPress which gives you the ability to control all of your custom post
-types, taxonomies and fields. The “Directory” plugin, uses custom taxonomies for
-its top level categories. You can as add many taxonomies as you want. Each
-taxonomy can be extended by adding categories and sub-categories inside it.
-Using this method you can create extremely well organized directory with perfect
-URL structure.
+Das Verzeichnis-Plugin gibt Dir die Möglichkeit, ein vollständiges Verzeichnis zu erstellen auf Deiner
+Webseite. Im Kern nutzt es das mitgeführte Untermodul „CustomPress“.
+CustomPress gibt Dir die Möglichkeit, alle Deine benutzerdefinierten Beiträge wie Typen, Taxonomien und Felder zu steuern. 
+Das Verzeichnis-Plugin verwendet benutzerdefinierte Taxonomien für
+seine Top-Level-Kategorien. Du kannst beliebig viele Taxonomien hinzufügen. Jede
+Taxonomie kann durch das Hinzufügen von Kategorien und Unterkategorien erweitert werden.
+Mit dieser Methode kannst Du ein äußerst gut organisiertes Verzeichnis erstellen.
 
 = Features =
-1.Add/edit/delete post types, taxonomies and custom fields.
-2.Default theme with options for “Background”, “Colors”, "Styles" and "Layout"
-3.Preconfigured Taxonomies and Custom Fields ( you can import at will )
-4.Header banner advertising management
-5.Cost of Service / Terms of Service management
-6.PayPal Express payment gateway ( direct or recurring payments )
+1. Beitragstypen, Taxonomien und benutzerdefinierte Felder hinzufügen/bearbeiten/löschen.
+2. Standardthema mit Optionen für „Hintergrund“, „Farben“, „Stile“ und „Layout“
+3. Vorkonfigurierte Taxonomien und benutzerdefinierte Felder (Du kannst sie nach Belieben importieren)
+4. Verwaltung von Header-Banner-Werbung
+5. Verwaltung der Servicekosten/Servicebedingungen
+6.PayPal Express-Zahlungsgateway (direkte oder wiederkehrende Zahlungen)
 
-== Installation ==
+== Plugin Guide ==
 
-1. Extract the plugin archive file.
-2. Upload the 'directory' folder to the '/wp-content/plugins/' directory.
-3. Activate the plugin through the 'Plugins' menu in WordPress
+Das Plugin-Paket „Verzeichnis“ enthält ein Standarddesign. Es kann gefunden werden
+im Verzeichnis „directory/themes/default“. Sie können es direkt aus dem verwenden
+Plugin oder wenn Sie es anpassen möchten, können Sie es in Ihr „Themes“-Verzeichnis kopieren
+und nehmen Sie dort Ihre Anpassungen vor. Apropos Anpassung, die das Thema mit sich bringt
+Theme-Optionen für „Hintergrund“, „Farben“, „Stile“ und „Layout“. Sie können finden
+Diese Optionen finden Sie in Ihrem WP-ADMIN-Panel unter der obersten Menüebene „Darstellung“.
+Mit diesen Optionen können Sie nahezu jeden Präsentationsaspekt steuern
+Standardthema.
 
-== Frequently Asked Questions ==
+Das „Directory“-Plugin enthält auch das Zahlungsgateway „PayPal Express“.
+integriert. Sie können Ihre API-Anmeldeinformationen unter Verzeichnis->Zahlungen->PayPal einrichten
+Einstellungen und Sie können anfangen, Ihre Benutzer für die Mitgliedschaft zu belästigen. Aktuelle Version
+umfasst einmalige Paypal-Zahlungen, direkte Kreditkartenzahlungen und wiederkehrende Zahlungen
+Abrechnungszahlungen integriert. Für die wiederkehrenden Abrechnungszahlungen können Sie festlegen
+Abrechnungszeitraum und Abrechnungshäufigkeit für die Zahlungen.
 
-== Upgrade Notice ==
+Das Plugin bietet außerdem einen Header-Bannerbereich, der als Werbe-Widget verwaltet werden kann
 
-== Usage Guides ==
+Für unerfahrene Benutzer enthält das Plugin 16 vorkonfigurierte Basistaxonomien
+die Du nach Belieben importieren kannst. Du kannst auch ein Beispiel für ein benutzerdefiniertes Feld importieren. Benutze
+die „Benutzerdefinierte Felder“-Funktionalität des Submoduls „Inhaltstypen“ kann um Deine Einträge, wie Du möchtest – Textfelder, Textbereiche, Kontrollkästchen, Radio
+Schaltflächen, Dropdowns und mehr erweitert werden.
+Alle diese Einstellungen findest Du unter
+Verzeichnis->Allgemein->Allgemeine Einstellungen
 
-The “Directory” plugin package comes with a default theme. It can be found
-inside “directory/themes/default” directory. You can use it straight from the
-plugin or if you want to customize it you can copy it to your “themes” directory
-and do your customizations there. Speaking of customization the theme comes with
-theme options for “Background”, “Colors”, "Styles" and "Layout". You can find
-these options inside your WP-ADMIN panel under the top level menu “Appearance”.
-With these options you can control almost any presentation aspect from the
-default theme.
+In der aktuellen Version kannst Du auch die Inhaltstypen festlegen, für die sich Unterseiten netzwerkweit bewerben können. 
+Diese Option findest Du unter Verzeichnis->Allgemein->Allgemeine Einstellungen
 
-The “Directory” plugin also comes with the “PayPal Express” payment gateway
-integrated. You can set up you API credential inside Directory->Payments->PayPal
-settings and you can begin chagrin your users for membership. Current version
-comes with a paypal one time payments, direct credit card payments and recurring
-billing payments integrated. For the recurring billing payments you can set the
-billing period and billing frequency for the payments.
+[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
 
-The plugin also offer a header banner space which can be managed as a Advertising widget
+== Mehr PSOURCE ==
 
-For the novice users, the plugin comes with 16 base preconfigured taxonomies
-which you can import at will. You can also import an example Custom Field. Using
-the “Custom Fields” functionality of the Content Types submodule you can extend
-your listings however you like – text-fields, text-areas, check-boxes, radio
-buttons, drop-downs and more. You can find all of this settings inside
-Direcrory->General->General Settings
+= PS MAPS PLUGIN =
 
-The current version also allows you to set the Content Types to apply for
-sub-sites network-wide. That option can be found under
-Directory->General->General Settings
+Hole mehr aus PS Events indem Du Deinen Veranstaltungen total anpassbare, interkative Google-Karten spendierst.
+So lotst Du Deine Teilnehmer direkt zum Veranstaltungsort!
+Mit unserem [PS Maps Plugin](https://n3rds.work/piestingtal_source/ps-google-maps-plugin/) entfaltet PS Events ganz neues Potential.
+
+= PSECOMMERCE PLUGIN =
+
+Verkaufe Online-Tickets oder verechne Teilnahme-Gebüren und verechne es über die PSeCommerce Gateways.
+Du kannst Deine Events auch als Shop-Produkte anlegen lassen.
+Lerne [PSeCommerce](https://n3rds.work/piestingtal_source/psecommerce-shopsystem/) kennen!
+
+= PS MITGLIEDSCHAFTEN PLUGIN =
+
+Deine Benutzer bezahlen für eine besondere Mitgliedschaft? 
+Belohne sie mit Ermäßigungen wenn sie an einer Deiner Veranstaltungen teilnehmen!
+Noch nicht? - Dann empfehlen wir Dir, einen Blick auf unser [PS Mitgliedschaften Plugin](https://n3rds.work/piestingtal_source/ps-mitgliedschaften-plugin/) zu werfen.
+
+= PS-ENEWSLETTER PLUGIN =
+
+(Empfohlen für ClassicPress)
+[PSeNewsletter](https://n3rds.work/piestingtal_source/psenewsletter-wordpress-newsletter-ohne-drittanbieter/) informiert Deine Event-Teilnehmer über weitere Event-Details, halte Deine Besucher Up-To-Date.
+
+= Finde mehr Piestingtal.Source =
+
+Wirf einen Blick in unser [PSOURCE Sortiment](https://n3rds.work/psource_kategorien/psource-plugins/) und hole noch mehr aus Deinem WordPress/ClassicPress!
+
+Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswork-digalize-das-piestingtal/newsletter-management/) über unsere Piestingtal.Source informiert!
+
+== Hilf uns ==
+
+Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
+Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Plugins unterstützen?
+
+= Unterstütze uns =
+
+Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
+
+Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswork-digalize-das-piestingtal/newsletter-management/) über unsere Piestingtal.Source informiert!
+
+
+== ChangeLog ==
+
+= 2.2.9 =
+
+* CP Source Freigabe
