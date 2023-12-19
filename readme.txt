@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: directory, paypal, post types, taxonomies, custom fields,
 Requires at least: 4.9.0
 Tested up to: 5.0.0
-Stable tag: 2.2.9
+Stable tag: 2.3.0
 
 Mit dem Verzeichnis-Plugin kannst Du eine vollständige Verzeichnis-Webseite erstellen.
 
@@ -103,6 +103,6 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
-= 2.2.9 =
+= 2.3.0 =
 
 * CP Source Freigabe
