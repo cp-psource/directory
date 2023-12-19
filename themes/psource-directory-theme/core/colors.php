@@ -99,7 +99,6 @@ class DR_Theme_Colors {
 				$msg = __( 'Colors Saved!', THEME_TEXT_DOMAIN ); ?>
 
 				<div class="wrap">
-					<?php screen_icon(); ?>
 					<h2><?php echo wp_get_theme()->Name . ' ' . __('Colors', THEME_TEXT_DOMAIN) ?></h2>
 
 					<?php if ( isset( $msg ) ) : ?>

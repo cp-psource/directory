@@ -2,7 +2,6 @@
 
 <?php $href_part = 'admin.php?page=directory_settings'; ?>
 
-<?php screen_icon('options-general'); ?>
 <h2><?php echo sprintf( __('Verzeichnis Einstellungen %s', $this->text_domain), DR_VERSION );?></h2>
 
 <h2 class="nav-tab-wrapper">

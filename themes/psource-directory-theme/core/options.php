@@ -42,7 +42,6 @@ class DR_Theme_Options {
 		$msg = __( 'Options Saved!', THEME_TEXT_DOMAIN ); ?>
 
 		<div class="wrap">
-			<?php screen_icon(); ?>
 			<h2><?php echo wp_get_theme()->Name . ' ' . __('Options', THEME_TEXT_DOMAIN) ?></h2>
 
 			<?php if ( isset( $msg ) ) : ?>

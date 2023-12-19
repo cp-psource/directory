@@ -1,7 +1,6 @@
 <?php if (!defined('ABSPATH')) die('Kein direkter Zugriff erlaubt!'); ?>
 
 <div id="dr-plugin-setting" class="wrap">
-	<?php screen_icon(); ?>
 	<h2><?php _e( 'Erste Schritte', $this->text_domain );?></h2>
 
 	<div class="metabox-holder">
