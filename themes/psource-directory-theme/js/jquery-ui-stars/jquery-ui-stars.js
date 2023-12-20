@@ -213,9 +213,9 @@ $.widget('ui.stars', {
 		 * Clean up to avoid memory leaks in certain versions of IE 6
 		 */
 		$(window).unload(function(){
-			self.$cancel.unbind('.stars');
-			self.$stars.unbind('.stars');
-			self.$form.unbind('.stars');
+			self.$cancel.off('.stars');
+			self.$stars.off('.stars');
+			self.$form.off('.stars');
 			self.$selec = self.$rboxs = self.$stars = self.$value = self.$cancel = self.$form = null;
 		});
 
@@ -227,7 +227,7 @@ $.widget('ui.stars', {
 			if(index != -1) {
 				var addClass = hover ? o.starHoverClass : o.starOnClass;
 				var remClass = hover ? o.starOnClass    : o.starHoverClass;
-				self.$stars.eq(index).prevAll('.' + o.starClass).andSelf().removeClass(remClass).addClass(addClass);
+				self.$stars.eq(index).prevAll('.' + o.starClass).addBack().removeClass(remClass).addClass(addClass);
 				self.$stars.eq(index).nextAll('.' + o.starClass).removeClass(o.starHoverClass + ' ' + o.starOnClass);
 				self._showCap(o.id2title[index]);
 			}
@@ -295,11 +295,11 @@ $.widget('ui.stars', {
 		this._disableAll();
 	},
 	destroy: function() {
-		this.$form.unbind('.stars');
-		this.$cancel.unbind('.stars').remove();
-		this.$stars.unbind('.stars').remove();
+		this.$form.off('.stars');
+		this.$cancel.off('.stars').remove();
+		this.$stars.off('.stars').remove();
 		this.$value.remove();
-		this.element.unbind('.stars').html(this.element.data('former.stars')).removeData('stars');
+		this.element.off('.stars').html(this.element.data('former.stars')).removeData('stars');
 		return this;
 	},
 	callback: function(e, type) {

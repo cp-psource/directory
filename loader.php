@@ -3,7 +3,7 @@
 Plugin Name: Verzeichnis
 Plugin URI: https://n3rds.work/docs/verzeichnis
 Description: Verzeichnis - Erstelle eine vollständige Verzeichnis-Seite.
-Version: 2.3.0
+Version: 1.0.0
 Author: WMS N@W
 Author URI: https://n3rds.work
 Text Domain: dr_text_domain
@@ -11,14 +11,7 @@ Domain Path: /languages
 License: GNU General Public License (Version 2 - GPLv2)
 */
 
-$plugin_header_translate = array(
-        __('Verzeichnis - Erstelle eine vollständige Verzeichnis-Seite.', 'dr_text_domain'),
-        __('DerN3rd', 'dr_text_domain'),
-        __('https://n3rds.work', 'dr_text_domain'),
-        __('Verzeichnis', 'dr_text_domain'),
-        );
-        
-        /*
+/*
 
 Authors - DerN3rd
 Copyright 2021-204 WMS N@W, (https://n3rds.work)
@@ -45,7 +38,7 @@ $MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'directory' 
 );
 // Define plugin version
-define( 'DR_VERSION', '2.3.0' );
+define( 'DR_VERSION', '1.0.0' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir

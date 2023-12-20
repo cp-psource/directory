@@ -192,9 +192,9 @@
 		},
 
 		hide : function () {
-			$('html').unbind('keyup', this.keypressHandler);
-			$('html').unbind('click', this.htmlClickHandler);
-			this.selectorElement.unbind('click');
+			$('html').off('keyup', this.keypressHandler);
+			$('html').off('click', this.htmlClickHandler);
+			this.selectorElement.off('click');
 			this.unselect();
 			this.selectorElement.hide();
 		},

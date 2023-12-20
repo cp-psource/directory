@@ -87,48 +87,47 @@ class DR_Ratings
      * @access public
      * @return void
      */
-    function save_rating($post_id, $rating){
-
-        if (!is_user_logged_in()) return; //Not logged in nowhere to store a vote.
-
+    function save_rating($post_id, $rating) {
+        if (!is_user_logged_in()) return; //Not logged in, nowhere to store a vote.
+    
         $votes = get_post_meta($post_id, '_sr_post_votes', true);
         $current_rating = get_post_meta($post_id, '_sr_post_rating', true);
-
+    
         $user_id = get_current_user_id();
         $voted = get_user_meta($user_id, '_sr_post_vote', true);
         $vote = empty($voted[$post_id]) ? 1 : 0;
-        $current_rating = empty($voted[$post_id]) ? $current_rating : $current_rating - $voted[$post_id]; //Remove any previous rating
+        $current_rating = empty($voted[$post_id]) ? $current_rating : (int) $current_rating - (int) $voted[$post_id]; //Remove any previous rating
         $voted[$post_id] = $rating;
         update_user_meta($user_id, '_sr_post_vote', $voted);
-        $votes += $vote;
+        $votes = intval($votes) + $vote;
         $rating = $current_rating + $rating;
         update_post_meta($post_id, '_sr_post_votes', $votes);
         update_post_meta($post_id, '_sr_post_rating', $rating);
     }
 
-    function delete_rating($post_id)
-    {
-        if (!is_user_logged_in()) return; //Not logged in nowhere to store a vote.
-        $votes = get_post_meta($post_id, '_sr_post_votes', true);
-        $votes = $votes - 1;
-        update_post_meta($post_id, '_sr_post_votes', $votes);
-        $current_rating = get_post_meta($post_id, '_sr_post_rating', true);
-        $voted = get_user_meta(get_current_user_id(), '_sr_post_vote', true);
-        $score = isset($voted[$post_id]) ? $voted[$post_id] : 0;
-        $current_rating = $current_rating - $score;
-        update_post_meta($post_id, '_sr_post_rating', $current_rating);
-        unset($voted[$post_id]);
-        update_user_meta(get_current_user_id(), '_sr_post_vote', $voted);
+    function delete_rating($post_id){
+    if (!is_user_logged_in()) return; //Not logged in, nowhere to store a vote.
 
-    }
+    $votes = get_post_meta($post_id, '_sr_post_votes', true);
+    $votes = intval($votes) - 1;
+    update_post_meta($post_id, '_sr_post_votes', $votes);
+
+    $current_rating = get_post_meta($post_id, '_sr_post_rating', true);
+    $voted = get_user_meta(get_current_user_id(), '_sr_post_vote', true);
+    $score = isset($voted[$post_id]) ? $voted[$post_id] : 0;
+    $current_rating = $current_rating - intval($score);
+    update_post_meta($post_id, '_sr_post_rating', $current_rating);
+
+    unset($voted[$post_id]);
+    update_user_meta(get_current_user_id(), '_sr_post_vote', $voted);
+}
 
     /**
      * Ajax callback which gets the post types associated with each page.
      *
      * @return JSON Encoded data
      **/
-    function handle_ajax_requests()
-    {
+    function handle_ajax_requests(){
         if ($_POST['rate'] == 0) {
             $this->delete_rating($_POST['post_id']);
         } else {
