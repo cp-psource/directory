@@ -500,20 +500,20 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 							'<a class="next button" href="#" title="<?php echo esc_attr($next_title); ?>"><?php echo $next_name; ?></a>' +
 							'</div>'
 						);
-						$buttons.find('.next').bind( 'click.pointer', function() {
+						$buttons.find('.next').on( 'click.pointer', function() {
 							t.element.pointer('destroy');
 							options<?php echo $pointer_id; ?>.next();
 							return false;
 						});
 						<?php if (!$this->hide_dismiss) { ?>
-						$buttons.find('.dismiss').bind( 'click.pointer', function() {
+						$buttons.find('.dismiss').on( 'click.pointer', function() {
 							t.element.pointer('destroy');
 							options<?php echo $pointer_id; ?>.close();
 							return false;
 						});
 						<?php } ?>
 						<?php if ($pointer_id > 0) { ?>
-						$buttons.find('.prev').bind( 'click.pointer', function() {
+						$buttons.find('.prev').on( 'click.pointer', function() {
 							t.element.pointer('destroy');
 							options<?php echo $pointer_id; ?>.prev();
 							return false;

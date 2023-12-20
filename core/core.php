@@ -951,14 +951,14 @@ if (!class_exists('Directory_Core')):
 
         function on_excerpt_more($more = '')
         {
-            return ' <a href="' . get_permalink() . '">More Info &raquo;</a>';
+            return ' <a href="' . get_permalink() . '">Weitere Informationen &raquo;</a>';
         }
 
         //replaces wp_trim_excerpt in our custom loops
         function listing_excerpt($excerpt, $content, $post_id)
         {
 
-            $excerpt_more = apply_filters('wp_trim_excerpt', ' <a class="dr_listing_more_link" href="' . get_permalink($post_id) . '">' . __('More Info &raquo;', $this->text_domain) . "</a>\n");
+            $excerpt_more = apply_filters('wp_trim_excerpt', ' <a class="dr_listing_more_link" href="' . get_permalink($post_id) . '">' . __('Weitere Informationen &raquo;', $this->text_domain) . "</a>\n");
             if ($excerpt) {
                 return $excerpt . $excerpt_more;
             } else {
@@ -1363,23 +1363,20 @@ if (!class_exists('Directory_Core')):
             return $result;
         }
 
-        function no_title($content = '')
-        {
+        function no_title($content = ''){
             if (!in_the_loop()) return $content;
             return '';
         }
 
-        function on_author_link($link = '')
-        {
+        function on_author_link($link = ''){
             global $post;
-            if ($post->post_type == 'directory_listing') {
+            if (isset($post) && is_a($post, 'WP_Post') && $post->post_type == 'directory_listing') {
                 $link = str_replace('/author/', '/dr-author/', $link);
             }
             return $link;
         }
 
-        function email_replace($content = '')
-        {
+        function email_replace($content = ''){
             global $post;
 
             $user_info = get_userdata($post->post_author);
@@ -1393,7 +1390,15 @@ if (!class_exists('Directory_Core')):
                                     str_replace('FROM_EMAIL', $_POST['email'],
                                         str_replace('FROM_SUBJECT', $_POST['subject'],
                                             str_replace('FROM_MESSAGE', $_POST['message'],
-                                                $content))))))));
+                                                $content
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
 
             return $result;
         }
@@ -1401,8 +1406,7 @@ if (!class_exists('Directory_Core')):
         /**
          * Handles the request for the contact form on the single{}.php template
          **/
-        function handle_contact_form_requests()
-        {
+        function handle_contact_form_requests(){
 
             /* Only handle request if on single{}.php template and our post type */
             if (get_post_type() == $this->post_type && is_single()) {

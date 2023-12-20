@@ -440,8 +440,8 @@ if ( ! class_exists( 'CustomPress_Core' ) ):
 			<script type="text/javascript">
 				jQuery(document).ready(function ($) {
 					// bind event to function
-					$(window).bind('load', handle_ajax_requests);
-					//$('#cp-select-page').bind('change', cp_ajax_post_process_request)
+					$(window).on('load', handle_ajax_requests);
+					//$('#cp-select-page').on('change', cp_ajax_post_process_request)
 
 					function handle_ajax_requests() {
 						// clear attributes

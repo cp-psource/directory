@@ -4,8 +4,8 @@
 * Directory_Core_Admin
 *
 * @uses Directory_Core
-* @copyright Incsub 2007-2011 {@link http://incsub.com}
-* @author Ivan Shaovchev (Incsub) {@link http://premium.wpmudev.org}
+* @copyright WMS N@W 2011-2024 {@link https://n3rds.work}
+* @author DerN3rd {@link https://n3rds.work}
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 
@@ -270,7 +270,7 @@ class Directory_Core_Admin extends Directory_Core {
 		$options = array_merge( $options, array( $params['key'] => $params ) );
 		update_option( $this->options_name, $options );
 
-		$this->message = __( 'Settings Saved.', $this->text_domain );
+		$this->message = __( 'Einstellungen gespeichert.', $this->text_domain );
 	}
 
 	/**
@@ -309,7 +309,7 @@ class Directory_Core_Admin extends Directory_Core {
 				check_admin_referer('verify');
 				$name = $params['delete_role'];
 				remove_role($name);
-				$this->message = sprintf(__('Role "%s" Removed' , $this->text_domain), $name);
+				$this->message = sprintf(__('Rolle %s entfernt' , $this->text_domain), $name);
 			}
 
 			if(isset($params['save']) ) $this->save_admin_options( $params );

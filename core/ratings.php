@@ -5,8 +5,8 @@
  *
  * @package Ratings
  * @version 1.0.0
- * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub)
+ * @copyright WMS N@W 2011-2024 {@link http://incsub.com}
+ * @author DerN3rd (WMS N@W)
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Ratings
@@ -44,11 +44,11 @@ class DR_Ratings
     function init()
     {
         $this->quality = array(
-            1 => __('Not so great', DR_TEXT_DOMAIN),
-            2 => __('Quite good', DR_TEXT_DOMAIN),
-            3 => __('Good', DR_TEXT_DOMAIN),
-            4 => __('Great!', DR_TEXT_DOMAIN),
-            5 => __('Excellent!', DR_TEXT_DOMAIN)
+            1 => __('Nicht so toll', DR_TEXT_DOMAIN),
+            2 => __('Ziemlich gut', DR_TEXT_DOMAIN),
+            3 => __('Gut', DR_TEXT_DOMAIN),
+            4 => __('Großartig!', DR_TEXT_DOMAIN),
+            5 => __('Exzellent!', DR_TEXT_DOMAIN)
         );
     }
 
@@ -87,8 +87,7 @@ class DR_Ratings
      * @access public
      * @return void
      */
-    function save_rating($post_id, $rating)
-    {
+    function save_rating($post_id, $rating){
 
         if (!is_user_logged_in()) return; //Not logged in nowhere to store a vote.
 
@@ -160,7 +159,7 @@ class DR_Ratings
     function enqueue_scripts()
     {
 
-        wp_register_script('jquery-ui-stars', DR_PLUGIN_URL . 'ui-front/js/jquery-ui-stars/jquery-ui-stars-min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-form'));
+        wp_register_script('jquery-ui-stars', DR_PLUGIN_URL . 'ui-front/js/jquery-ui-stars/jquery-ui-stars.js', array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-form'));
         wp_enqueue_script('jquery-ui-stars');
     }
 
@@ -201,7 +200,7 @@ class DR_Ratings
                         // Disable Stars for exclude the next vote
                         //ui.disable();
                         // Display message to the user at the begining of request
-                        $(".messages").text("<?php _e('Saving...', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
+                        $(".messages").text("<?php _e('Speichern...', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
                         // Send request to the server using POST method
                         $.post("<?php echo $ajaxurl; ?>", {
                             action: 'sr_save_vote',
@@ -214,7 +213,7 @@ class DR_Ratings
                             $(".all_votes-<? echo $post_id; ?>").text(response.votes);
                             $(".all_avg<? echo $post_id; ?>").text(response.avg);
                             // Display confirmation message to the user
-                            $(".messages").text("<?php _e('Rating saved', DR_TEXT_DOMAIN); ?> (" + value + "). <?php _e('Thanks!', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
+                            $(".messages").text("<?php _e('Bewertung gespeichert', DR_TEXT_DOMAIN); ?> (" + value + "). <?php _e('Danke!', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
                             // Hide confirmation message and enable stars for "Rate this" control, after 2 sec...
                             setTimeout(function () {
                                 $(".messages").fadeOut(1000, function () {
@@ -272,7 +271,7 @@ class DR_Ratings
 			*/
             ?>
             <div class="clear-left"></div>
-            <div class="sr-avg-rating"><strong><?php _e('Rate this:', DR_TEXT_DOMAIN); ?></strong> <span
+            <div class="sr-avg-rating"><strong><?php _e('Bewerte dies:', DR_TEXT_DOMAIN); ?></strong> <span
                     class="caption"></span>
 
                 <form class="rat" action="#" method="post">
@@ -282,7 +281,7 @@ class DR_Ratings
                                 value="<?php echo $scale; ?>"><?php echo $text; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="submit" value="<?php _e('Rate it!', DR_TEXT_DOMAIN); ?>"/>
+                    <input type="submit" value="<?php _e('Bewerte es!', DR_TEXT_DOMAIN); ?>"/>
                 </form>
             </div> <?php
         }
@@ -298,9 +297,9 @@ class DR_Ratings
     {
         global $post;
         $rating = $this->get_rating($post->ID); ?>
-        <div class="sr-rate-this"><strong><?php _e('Average rating', DR_TEXT_DOMAIN); ?></strong>
+        <div class="sr-rate-this"><strong><?php _e('Durchschnittliche Bewertung', DR_TEXT_DOMAIN); ?></strong>
             <span>(<span
-                    class="all_votes-<?php echo $post->ID; ?>"><?php echo $rating['votes']; ?></span> <?php _e('votes', DR_TEXT_DOMAIN); ?>
+                    class="all_votes-<?php echo $post->ID; ?>"><?php echo $rating['votes']; ?></span> <?php _e('Stimmen', DR_TEXT_DOMAIN); ?>
                 ; <span class="all_avg<?php echo $post->ID; ?>"><?php echo $rating['avg'] ?></span>)</span>
 
             <form class="avg" style="float: left; padding: 3px 8px 0 0;" action="#">
@@ -327,9 +326,9 @@ class DR_Ratings
         }
 
         $rating = $this->get_rating($post_id); ?>
-        <div class="sr-rate-this"><strong><?php _e('Average rating', DR_TEXT_DOMAIN); ?></strong>
+        <div class="sr-rate-this"><strong><?php _e('Durchschnittliche Bewertung', DR_TEXT_DOMAIN); ?></strong>
             <span>(<span
-                    class="all_votes<?php echo $post_id; ?>"><?php echo $rating['votes']; ?></span> <?php _e('votes', DR_TEXT_DOMAIN); ?>
+                    class="all_votes<?php echo $post_id; ?>"><?php echo $rating['votes']; ?></span> <?php _e('Stimmen', DR_TEXT_DOMAIN); ?>
                 ; <span class="all_avg<?php echo $post_id; ?>"><?php echo $rating['avg'] ?></span>)</span>
 
             <form class="avg_of_listings" style="float: left; padding: 3px 8px 0 0;" action="#">
@@ -356,7 +355,7 @@ class DR_Ratings
         $rating = $this->get_rating($post->ID, $user_id);
 
         ?>
-        <div class="sr-user-rating"><strong><?php _e('Rating:', DR_TEXT_DOMAIN); ?></strong>
+        <div class="sr-user-rating"><strong><?php _e('Bewertung:', DR_TEXT_DOMAIN); ?></strong>
             <span>(<?php echo $this->quality[$rating] ?>)</span>
 
             <form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">

@@ -145,7 +145,7 @@ $.widget('ui.stars', {
 		/*
 		 * Attach stars event handler
 		 */
-		this.$stars.bind('click.stars', function(e) {
+		this.$stars.on('click.stars', function(e) {
 			if(!o.forceSelect && o.disabled) return false;
 
 			var i = self.$stars.index(this);
@@ -159,12 +159,12 @@ $.widget('ui.stars', {
 
 			!o.forceSelect && self.callback(e, 'star');
 		})
-		.bind('mouseover.stars', function() {
+		.on('mouseover.stars', function() {
 			if(o.disabled) return false;
 			var i = self.$stars.index(this);
 			fillTo(i, true);
 		})
-		.bind('mouseout.stars', function() {
+		.on('mouseout.stars', function() {
 			if(o.disabled) return false;
 			fillTo(self.options.checked, false);
 		});
@@ -173,7 +173,7 @@ $.widget('ui.stars', {
 		/*
 		 * Attach cancel event handler
 		 */
-		this.$cancel.bind('click.stars', function(e) {
+		this.$cancel.on('click.stars', function(e) {
 			if(!o.forceSelect && (o.disabled || o.value == o.cancelValue)) return false;
 
 			o.checked = -1;
@@ -188,13 +188,13 @@ $.widget('ui.stars', {
 
 			!o.forceSelect && self.callback(e, 'cancel');
 		})
-		.bind('mouseover.stars', function() {
+		.on('mouseover.stars', function() {
 			if(self._disableCancel()) return false;
 			self.$cancel.addClass(o.cancelHoverClass);
 			fillNone();
 			self._showCap(o.cancelTitle);
 		})
-		.bind('mouseout.stars', function() {
+		.on('mouseout.stars', function() {
 			if(self._disableCancel()) return false;
 			self.$cancel.removeClass(o.cancelHoverClass);
 			self.$stars.triggerHandler('mouseout.stars');
@@ -204,7 +204,7 @@ $.widget('ui.stars', {
 		/*
 		 * Attach onReset event handler to the parent FORM
 		 */
-		this.$form.bind('reset.stars', function(){
+		this.$form.on('reset.stars', function(){
 			!o.disabled && self.select(o.defaultValue);
 		});
 

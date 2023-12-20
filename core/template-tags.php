@@ -63,7 +63,7 @@ function the_dr_categories_home( $echo = true, $atts = null ){
 
 		$output .= sprintf('<h2><a href="%s" title="%s %s" >%s%s</a></h2>',
 		get_term_link( $category ),
-		esc_html__( 'View all posts in ', DR_TEXT_DOMAIN ),
+		esc_html__( 'Alle Beiträge anzeigen in ', DR_TEXT_DOMAIN ),
 		$category->name,
 		$category->name,
 		$parent_count );
@@ -227,7 +227,7 @@ function the_dr_categories_archive() {
 
 	foreach( $categories as $category ) {
 
-		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
+		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'Alle Beiträge in %s anzeigen', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
 
 		if ( $i % 5 == 0 )
 		$output .= '</td><td>';
@@ -256,7 +256,7 @@ function the_dr_breadcrumbs() {
 	foreach ( $category_parent_ids as $category_parent_id ) {
 		$category_parent = get_term( $category_parent_id, $category->taxonomy );
 
-		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
+		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'Alle Beiträge in %s anzeigen', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
 	}
 
 	//$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a>';
@@ -274,7 +274,7 @@ function the_dr_posted_on() {
 
 	$alink = get_author_directory_url( get_the_author_meta( 'ID' ) ) ;
 
-	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
+	printf( __( '<span class="%1$s">Gepostet am</span> %2$s <span class="meta-sep">von</span> %3$s', DR_TEXT_DOMAIN ),
 	'meta-prep meta-prep-author',
 	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
 	esc_attr( get_permalink() ),
@@ -283,7 +283,7 @@ function the_dr_posted_on() {
 	),
 	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 	$alink,
-	sprintf( esc_attr__( 'View all posts by %s', DR_TEXT_DOMAIN ), get_the_author() ),
+	sprintf( esc_attr__( 'Alle Beiträge von %s', DR_TEXT_DOMAIN ), get_the_author() ),
 	get_the_author()
 	)
 	);
@@ -304,11 +304,11 @@ function the_dr_posted_in() {
 	$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
 
 	if ( $tag_list ) {
-		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', DR_TEXT_DOMAIN );
+		$posted_in = __( 'Dieser Eintrag wurde in %1$s veröffentlicht und mit %2$s getaggt. Setze ein Lesezeichen für den <a href="%3$s" title="Permalink zu %4$s" rel="bookmark">Permalink</a>.', DR_TEXT_DOMAIN );
 	} elseif ( $categories_list ) {
-		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', DR_TEXT_DOMAIN );
+		$posted_in = __( 'Dieser Eintrag wurde in %1$s veröffentlicht. Setze ein Lesezeichen für den <a href="%3$s" title="Permalink zu %4$s" rel="bookmark">Permalink</a>.', DR_TEXT_DOMAIN );
 	} else {
-		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', DR_TEXT_DOMAIN );
+		$posted_in = __( 'Setze ein Lesezeichen für den <a href="%3$s" title="Permalink zu %4$s" rel="bookmark">Permalink</a>.', DR_TEXT_DOMAIN );
 	}
 
 	// Prints the string, replacing the placeholders.
@@ -336,18 +336,18 @@ function the_dr_comment( $comment, $args, $depth ) {
 
 			<div class="comment-author vcard">
 				<?php echo get_avatar( $comment, 40 ); ?>
-				<?php printf( __( '%s <span class="says">says:</span>', DR_TEXT_DOMAIN ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+				<?php printf( __( '%s <span class="says">sagt:</span>', DR_TEXT_DOMAIN ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 			</div><!-- .comment-author .vcard -->
 
 			<?php if ( $comment->comment_approved == '0' ) : ?>
-			<em><?php _e( 'Your review is awaiting moderation.', DR_TEXT_DOMAIN ); ?></em>
+			<em><?php _e( 'Deine Bewertung wartet auf die Moderation.', DR_TEXT_DOMAIN ); ?></em>
 			<br />
 			<?php endif; ?>
 
 			<div class="comment-meta commentmetadata">
 				<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-					<?php printf( __( '%1$s at %2$s', DR_TEXT_DOMAIN ), get_comment_date(),  get_comment_time() ); ?>
-				</a><?php edit_comment_link( __( '(Edit)', DR_TEXT_DOMAIN ), ' ' ); ?>
+					<?php printf( __( '%1$s um %2$s', DR_TEXT_DOMAIN ), get_comment_date(),  get_comment_time() ); ?>
+				</a><?php edit_comment_link( __( '(Bearbeiten)', DR_TEXT_DOMAIN ), ' ' ); ?>
 			</div><!-- .comment-meta .commentmetadata -->
 
 			<?php do_action('sr_user_rating', $comment->user_id); ?>
@@ -366,7 +366,7 @@ function the_dr_comment( $comment, $args, $depth ) {
 	case 'pingback'  :
 	case 'trackback' : ?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', DR_TEXT_DOMAIN ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', DR_TEXT_DOMAIN), ' ' ); ?></p>
+		<p><?php _e( 'Pingback:', DR_TEXT_DOMAIN ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Bearbeiten)', DR_TEXT_DOMAIN), ' ' ); ?></p>
 	</li>
 	<?php
 	break;
@@ -434,7 +434,7 @@ function the_author_directory_link(){
 	$link = sprintf(
 	'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 	esc_url( get_author_directory_url( $authordata->ID, $authordata->user_nicename ) ),
-	esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+	esc_attr( sprintf( __( 'Beiträge von %s' ), get_the_author() ) ),
 	get_the_author()
 	);
 	return $link;
