@@ -7,7 +7,7 @@ $options = $this->get_options('payments');
 
 <div class="my-credits">
 
-	<h3><?php _e( 'Verfügbares Verzeichnis Guthaben', $this->text_domain ); ?></h3>
+	<h3><?php _e( 'Verfügbares Verzeichnis-Guthaben', $this->text_domain ); ?></h3>
 	<table class="form-table">
 		<tr>
 			<th>

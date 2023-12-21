@@ -304,11 +304,9 @@ function the_dr_posted_in() {
 	$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
 
 	if ( $tag_list ) {
-		$posted_in = __( 'Dieser Eintrag wurde in %1$s veröffentlicht und mit %2$s getaggt. Setze ein Lesezeichen für den <a href="%3$s" title="Permalink zu %4$s" rel="bookmark">Permalink</a>.', DR_TEXT_DOMAIN );
+		$posted_in = __( 'Dieser Eintrag wurde in %1$s veröffentlicht und mit %2$s getaggt.', DR_TEXT_DOMAIN );
 	} elseif ( $categories_list ) {
-		$posted_in = __( 'Dieser Eintrag wurde in %1$s veröffentlicht. Setze ein Lesezeichen für den <a href="%3$s" title="Permalink zu %4$s" rel="bookmark">Permalink</a>.', DR_TEXT_DOMAIN );
-	} else {
-		$posted_in = __( 'Setze ein Lesezeichen für den <a href="%3$s" title="Permalink zu %4$s" rel="bookmark">Permalink</a>.', DR_TEXT_DOMAIN );
+		$posted_in = __( 'Dieser Eintrag wurde in %1$s veröffentlicht.', DR_TEXT_DOMAIN );
 	}
 
 	// Prints the string, replacing the placeholders.

@@ -100,7 +100,7 @@ class DR_Ratings
         $voted[$post_id] = $rating;
         update_user_meta($user_id, '_sr_post_vote', $voted);
         $votes = intval($votes) + $vote;
-        $rating = $current_rating + $rating;
+        $rating = intval($current_rating) + intval($rating);
         update_post_meta($post_id, '_sr_post_votes', $votes);
         update_post_meta($post_id, '_sr_post_rating', $rating);
     }

@@ -14,7 +14,7 @@ License: GNU General Public License (Version 2 - GPLv2)
 /*
 
 Authors - DerN3rd
-Copyright 2021-204 WMS N@W, (https://n3rds.work)
+Copyright 2021-2024 WMS N@W, (https://n3rds.work)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by

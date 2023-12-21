@@ -25,7 +25,7 @@ jQuery(function($) {
 
 	populate_checkboxes();
 
-	$('#roles').change(populate_checkboxes);
+	$('#roles').on('change', populate_checkboxes);
 
 	$('.dr-general').submit(function() {
 		$('#ajax-loader').show();

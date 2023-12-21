@@ -6,8 +6,8 @@
 *
 * @package Payments
 * @version 1.0.0
-* @copyright Incsub 2007-2011 {@link http://incsub.com}
-* @author Ivan Shaovchev (Incsub)
+* @copyright WMS N@W 2011-2024 {@link https://n3rds.work}
+* @author DerN3rd
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 

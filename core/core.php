@@ -3,8 +3,8 @@
 /**
  * Directory_Core
  *
- * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://premium.wpmudev.org}
+ * @copyright WMS N@W 2011-2024 {@link https://n3rds.work}
+ * @author DerN3rd {@link https://n3rds.work}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 
@@ -86,23 +86,23 @@ if (!class_exists('Directory_Core')):
 
             //Default capability map for Listings
             $this->capability_map = array(
-                'read_listings' => __('View listings.', $this->text_domain),
-                'read_private_listings' => __('View private listings.', $this->text_domain),
+                'read_listings' => __('Einträge anzeigen.', $this->text_domain),
+                'read_private_listings' => __('Private Einträge ansehen.', $this->text_domain),
 
-                'publish_listings' => __('Add listings.', $this->text_domain),
+                'publish_listings' => __('Einträge hinzufügen.', $this->text_domain),
 
-                'edit_listings' => __('Edit listings.', $this->text_domain),
-                'edit_published_listings' => __('Edit published listings.', $this->text_domain),
-                'edit_private_listings' => __('Edit private listings.', $this->text_domain),
+                'edit_listings' => __('Einträge bearbeiten.', $this->text_domain),
+                'edit_published_listings' => __('Bearbeite veröffentlichte Einträge.', $this->text_domain),
+                'edit_private_listings' => __('Bearbeite private Einträge.', $this->text_domain),
 
-                'delete_listings' => __('Delete listings', $this->text_domain),
-                'delete_published_listings' => __('Delete published listings.', $this->text_domain),
-                'delete_private_listings' => __('Delete private listings.', $this->text_domain),
+                'delete_listings' => __('Einträge löschen', $this->text_domain),
+                'delete_published_listings' => __('Veröffentlichte Einträge löschen.', $this->text_domain),
+                'delete_private_listings' => __('Private Einträge löschen.', $this->text_domain),
 
-                'edit_others_listings' => __('Edit others\' listings.', $this->text_domain),
-                'delete_others_listings' => __('Delete others\' listings.', $this->text_domain),
+                'edit_others_listings' => __('Bearbeite die Einträge anderer.', $this->text_domain),
+                'delete_others_listings' => __('Lösche die Einträge anderer.', $this->text_domain),
 
-                'upload_files' => __('Upload files.', $this->text_domain),
+                'upload_files' => __('Daten hochladen.', $this->text_domain),
             );
 
             add_action('plugins_loaded', array(&$this, 'on_plugins_loaded'), 12);
@@ -172,11 +172,11 @@ if (!class_exists('Directory_Core')):
             $post_id = $id;
             if (get_post_type($post_id) != 'directory_listing') return $defaults;
 
-            $defaults['title_reply'] = __('Write a Review', $this->text_domain);
-            $defaults['label_submit'] = __('Post Review', $this->text_domain);
-            $defaults['must_log_in'] = '<p class="must-log-in">' . sprintf(__('You must be <a href="%s">logged in</a> to post a review.', $this->text_domain), wp_login_url(apply_filters('the_permalink', get_permalink($post_id)))) . '</p>';
-            $defaults['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . __('Review', $this->text_domain) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
-            $defaults['cancel_reply_link'] = __('Cancel review', $this->text_domain);
+            $defaults['title_reply'] = __('Eine Rezension schreiben', $this->text_domain);
+            $defaults['label_submit'] = __('Rezension abgeben', $this->text_domain);
+            $defaults['must_log_in'] = '<p class="must-log-in">' . sprintf(__('Du musst <a href="%s">angemeldet</a> sein, um eine Bewertung abzugeben.', $this->text_domain), wp_login_url(apply_filters('the_permalink', get_permalink($post_id)))) . '</p>';
+            $defaults['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . __('Rezension', $this->text_domain) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+            $defaults['cancel_reply_link'] = __('Bewertung abbrechen', $this->text_domain);
 
             return $defaults;
         }
@@ -191,14 +191,14 @@ if (!class_exists('Directory_Core')):
         {
 
             $cc_contact = array(
-                'cc_email' => __('CC Email', $this->text_domain),
-                'cc_firstname' => __('CC First Name', $this->text_domain),
-                'cc_lastname' => __('CC Last Name', $this->text_domain),
-                'cc_street' => __('CC Street', $this->text_domain),
-                'cc_city' => __('CC City', $this->text_domain),
-                'cc_state' => __('CC State', $this->text_domain),
-                'cc_zip' => __('CC Zip', $this->text_domain),
-                'cc_country_code' => __('CC Country Code', $this->text_domain),
+                'cc_email' => __('CC E-Mail', $this->text_domain),
+                'cc_firstname' => __('CC Vorname', $this->text_domain),
+                'cc_lastname' => __('CC Nachname', $this->text_domain),
+                'cc_street' => __('CC Straße', $this->text_domain),
+                'cc_city' => __('CC Stadt', $this->text_domain),
+                'cc_state' => __('CC Staat', $this->text_domain),
+                'cc_zip' => __('CC Postleitzahl', $this->text_domain),
+                'cc_country_code' => __('CC Landesvorwahl', $this->text_domain),
             );
 
             return array_merge($cc_contact, $contact_fields);
@@ -319,8 +319,6 @@ if (!class_exists('Directory_Core')):
 
             if (isset($query)) {
 
-                //printf('<pre>%s</pre>',print_r($query, true) ); exit;
-
                 //Or are we editing a listing?
                 if (!@is_post_type_archive('directory_listing') && @is_page($this->directory_page_id)) {
 
@@ -330,12 +328,7 @@ if (!class_exists('Directory_Core')):
 
                 //Handle any security redirects
                 if (!is_user_logged_in()) {
-                    if (@is_page($this->add_listing_page_id)
-                        || @is_page($this->edit_listing_page_id)
-                            || @is_page($this->my_listings_page_id)
-                                || @is_page($this->signup_page_id)
-                    ) {
-
+                    if (@is_page($this->add_listing_page_id) || @is_page($this->edit_listing_page_id) || @is_page($this->my_listings_page_id) || @is_page($this->signup_page_id)) {
                         $args = array('redirect_to' => urlencode(get_permalink($query->queried_object_id)));
                         if (!empty($_REQUEST['register'])) $args['register'] = $_REQUEST['register'];
                         if (!empty($_REQUEST['reset'])) $args['reset'] = $_REQUEST['reset'];
@@ -391,15 +384,12 @@ if (!class_exists('Directory_Core')):
                 exit();
             }
 
-            //printf('<pre>%s</pre>',print_r($wp, true) ); exit;
             return $wp;
         }
 
         function on_pre_get_posts($wp_query_obj)
         {
             global $current_user;
-
-            //printf('<pre>%s</pre>',print_r($wp_query_obj, true) ); exit;
 
             if ($current_user->ID == 0) return;
 
@@ -544,7 +534,7 @@ if (!class_exists('Directory_Core')):
         {
 
             /* Create neccessary pages */
-            $post_content = __('Virtual page. Editing this page won\'t change anything.', $this->text_domain);
+            $post_content = __('Virtuelle Seite. Durch das Bearbeiten dieser Seite ändert sich nichts.', $this->text_domain);
 
             $directory_page = $this->get_page_by_meta('listings');
             $page_id = ($directory_page && $directory_page->ID > 0) ? $directory_page->ID : 0;

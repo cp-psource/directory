@@ -4,7 +4,7 @@ $(function () {
 /**
  * Handler tutorial resets.
  */
-$(".dr-restart_tutorial").click(function () {
+$(".dr-restart_tutorial").on('click', function () {
 	var $me = $(this);
 	// Change UI
 	$me.after(

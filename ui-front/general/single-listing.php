@@ -32,7 +32,7 @@ endif;
 
 endif; ?>
 
-<?php if(has_post_thumbnail() ) the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
+<?php if(has_post_thumbnail() ) the_post_thumbnail( array( 450, 300 ), array( 'class' => 'alignleft' ) ); ?>
 
 <div class="entry-meta">
 	<?php the_dr_posted_on(); ?>
@@ -137,7 +137,7 @@ echo $content;
 		<?php the_author_meta( 'description' ); ?>
 		<div id="author-link">
 			<a href="<?php echo get_author_directory_url( get_the_author_meta( 'ID' ) ); ?>">
-				<?php printf( __( 'Alle Einträge vonView all posts by %s <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ), get_the_author() ); ?>
+				<?php printf( __( 'Alle Einträge von %s <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ), get_the_author() ); ?>
 			</a>
 		</div><!-- #author-link    -->
 	</div><!-- #author-description -->
