@@ -4,8 +4,8 @@
 * DR_Theme_Colors
 * Setup the Colors page inside WordPress Appearance Menu
 *
-* @copyright Incsub 2007-2011 {@link http://incsub.com}
-* @author Ivan Shaovchev (Incsub)
+* @copyright WMS N@W 2011-2024 {@link https://n3rds.work}
+* @author DerN3rd
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 class DR_Theme_Colors {
@@ -32,7 +32,7 @@ class DR_Theme_Colors {
 	* Load up the menu page.
 	*/
 	function add_page() {
-		$page = add_theme_page( __('Colors', THEME_TEXT_DOMAIN), __('Colors', THEME_TEXT_DOMAIN), 'edit_theme_options', 'colors', array( &$this, 'output_admin_page' ) );
+		$page = add_theme_page( __('Farben', THEME_TEXT_DOMAIN), __('Farben', THEME_TEXT_DOMAIN), 'edit_theme_options', 'colors', array( &$this, 'output_admin_page' ) );
 
 		add_action( 'admin_print_styles-'  . $page, array( &$this, 'enqueue_styles' ));
 		add_action( 'admin_print_scripts-' . $page, array( &$this, 'enqueue_scripts' ));
@@ -82,7 +82,7 @@ class DR_Theme_Colors {
 					});
 					$('.colors').each(function() {
 						$(this).children('.colorpicker').farbtastic($(this).children('.colors_field'));
-						$(this).children('a').click(function() {
+						$(this).children('a').on('click', function() {
 							$(this).parent().children('.colorpicker').fadeIn(2);
 						});
 					});
@@ -96,105 +96,105 @@ class DR_Theme_Colors {
 			*/
 			function output_admin_page() {
 				if ( isset( $_REQUEST['updated'] ) )
-				$msg = __( 'Colors Saved!', THEME_TEXT_DOMAIN ); ?>
+				$msg = __( 'Farben gespeichert!', THEME_TEXT_DOMAIN ); ?>
 
 				<div class="wrap">
-					<h2><?php echo wp_get_theme()->Name . ' ' . __('Colors', THEME_TEXT_DOMAIN) ?></h2>
+					<h2><?php echo wp_get_theme()->Name . ' ' . __('Farben', THEME_TEXT_DOMAIN) ?></h2>
 
 					<?php if ( isset( $msg ) ) : ?>
 					<div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
 					<?php endif; ?>
 
 					<form method="post" action="options.php">
-						<h3><?php _e( 'Colors', THEME_TEXT_DOMAIN  ); ?></h3>
+						<h3><?php _e( 'Farben', THEME_TEXT_DOMAIN  ); ?></h3>
 						<?php settings_fields('dir_colors_group'); ?>
 						<?php $colors = get_option('dir_colors'); ?>
-						<label><input type="checkbox" name="dir_colors[enable]" value="1" <?php checked(! empty($colors['enable'] ) ); ?> /> <?php _e('Allow color overrides below.', THEME_TEXT_DOMAIN); ?></label>
+						<label><input type="checkbox" name="dir_colors[enable]" value="1" <?php checked(! empty($colors['enable'] ) ); ?> /> <?php _e('Farbüberschreibungen unten zulassen.', THEME_TEXT_DOMAIN); ?></label>
 						<table class="form-table">
 							<tr>
-								<th><?php _e('Site Title', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Seitentitel', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[site_title]" value="<?php if ( isset( $colors['site_title'] )) echo $colors['site_title']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[site_title_ud]"  <?php if ( !empty( $colors['site_title_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[site_title_ud]"  <?php if ( !empty( $colors['site_title_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Navigation Bar', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Navigationsleiste', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[navigation_bar]" value="<?php if ( isset( $colors['navigation_bar'] )) echo $colors['navigation_bar']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[navigation_bar_ud]" value="1" <?php if ( !empty( $colors['navigation_bar_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[navigation_bar_ud]" value="1" <?php if ( !empty( $colors['navigation_bar_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Content Wrapper', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Content-Wrapper', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[content_wrapper]" value="<?php if ( isset( $colors['content_wrapper'] )) echo $colors['content_wrapper']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[content_wrapper_ud]" value="1" <?php if ( !empty( $colors['content_wrapper_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[content_wrapper_ud]" value="1" <?php if ( !empty( $colors['content_wrapper_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Search Box', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Suchbox', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[search_box]" value="<?php if ( isset( $colors['search_box'] )) echo $colors['search_box']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[search_box_ud]" value="1" <?php if ( !empty( $colors['search_box_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[search_box_ud]" value="1" <?php if ( !empty( $colors['search_box_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Grid and Action Bars', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Raster und Aktionsleisten', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[ga_bars]" value="<?php if ( isset( $colors['ga_bars'] )) echo $colors['ga_bars']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[ga_bars_ud]" value="1" <?php if ( !empty( $colors['ga_bars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[ga_bars_ud]" value="1" <?php if ( !empty( $colors['ga_bars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Headings Bars', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Überschriftenleisten', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[hbars]" value="<?php if ( isset( $colors['hbars'] )) echo $colors['hbars']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[hbars_ud]" value="1" <?php if ( !empty( $colors['hbars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[hbars_ud]" value="1" <?php if ( !empty( $colors['hbars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Buttons', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Schaltflächen', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[btns]" value="<?php if ( isset( $colors['btns'] )) echo $colors['btns']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[btns_ud]" value="1" <?php if ( !empty( $colors['btns_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[btns_ud]" value="1" <?php if ( !empty( $colors['btns_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e('Buttons Text', THEME_TEXT_DOMAIN); ?></th>
+								<th><?php _e('Schaltflächen Text', THEME_TEXT_DOMAIN); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[btns_txt]" value="<?php if ( isset( $colors['btns_txt'] )) echo $colors['btns_txt']; else echo '#FFFFFF'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[btns_txt_ud]" value="1" <?php if ( !empty( $colors['btns_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[btns_txt_ud]" value="1" <?php if ( !empty( $colors['btns_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e( 'Global Text' ); ?></th>
+								<th><?php _e( 'Globaler Text' ); ?></th>
 								<td class="colors">
 									<input class="colors_field" type="text" name="dir_colors[global_txt]" class="colors" value="<?php if ( isset( $colors['global_txt'] )) echo $colors['global_txt']; else echo '#666666'; ?>" />
-									<a href="#"><?php _e('Select Color', THEME_TEXT_DOMAIN); ?></a>
-									<input class="use_default" type="checkbox" name="dir_colors[global_txt_ud]" value="1" <?php if ( !empty( $colors['global_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', THEME_TEXT_DOMAIN); ?>
+									<a href="#"><?php _e('Wähle Farbe', THEME_TEXT_DOMAIN); ?></a>
+									<input class="use_default" type="checkbox" name="dir_colors[global_txt_ud]" value="1" <?php if ( !empty( $colors['global_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Verwende Standard', THEME_TEXT_DOMAIN); ?>
 									<div class="colorpicker"></div>
 								</td>
 							</tr>
 						</table>
 						<p class="submit">
-							<input type="submit" class="button-primary" name="save_colors" value="<?php _e('Save Changes', THEME_TEXT_DOMAIN); ?>" />
+							<input type="submit" class="button-primary" name="save_colors" value="<?php _e('Änderungen speichern', THEME_TEXT_DOMAIN); ?>" />
 						</p>
 					</form>
 				</div> <?php

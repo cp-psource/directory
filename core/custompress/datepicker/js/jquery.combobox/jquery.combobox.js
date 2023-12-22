@@ -42,7 +42,7 @@
 		this.textInputElement.css('margin', '0 '+showSelectorButton.outerWidth()+'px 0 0');
 		var thisSelector = this.selector;
 		var thisCombobox = this;
-		showSelectorButton.click(function (e) {
+		showSelectorButton.on('click',function (e) {
 			$('html').trigger('click');
 			thisSelector.buildSelectOptionList();
 			thisSelector.show();
@@ -165,7 +165,7 @@
 				ulElement.append('<li>'+selectOptions[i]+'</li>');
 			}
 			var thisSelector = this;
-			this.selectorElement.find('li').click(function (e) {
+			this.selectorElement.find('li').on('click',function (e) {
 				thisSelector.hide();
 				thisSelector.combobox.setValue(this.innerHTML);
 				thisSelector.combobox.focus();

@@ -5,7 +5,7 @@
  *
  * @package Directory
  * @subpackage UI Front
- * @since Directory 2.0
+ * @since Directory 1.0
  */
 global $query_string;
 

@@ -10,7 +10,12 @@ Text Domain: dr_text_domain
 Domain Path: /languages
 License: GNU General Public License (Version 2 - GPLv2)
 */
-
+$plugin_header_translate = array(
+        __('Verzeichnis - Erstelle eine vollständige Verzeichnis-Seite.', 'dr_text_domain'),
+        __('DerN3rd', 'dr_text_domain'),
+        __('https://n3rds.work', 'dr_text_domain'),
+        __('Directory', 'dr_text_domain'),
+        );
 /*
 
 Authors - DerN3rd

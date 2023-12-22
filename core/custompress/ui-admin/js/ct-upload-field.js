@@ -30,7 +30,7 @@
                     url = attachment.icon;
                 }
                 //image url
-                if (parent.find('img').size() > 0) {
+                if (parent.find('img').length > 0) {
                     var img = parent.find('img');
                     img.attr('src', url);
                 } else {
@@ -46,7 +46,7 @@
                 }
                 //append size dropdown
                 if (attachment.type == 'image') {
-                    if (parent.find('select').size() == 0) {
+                    if (parent.find('select').length == 0) {
                         var sizes = $('<select/>').addClass('ct-upload-image-size').css({
                             'display': 'block'
                         });

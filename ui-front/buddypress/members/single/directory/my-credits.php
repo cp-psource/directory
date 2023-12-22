@@ -7,7 +7,7 @@
 *
 * @package Directory
 * @subpackage UI Front BuddyPress
-* @since Directory 2.0
+* @since Directory 1.0
 */
 
 $options = $this->get_options('payments');

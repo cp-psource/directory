@@ -102,7 +102,7 @@
                             href  : '#',
                             title : 'Removing tag',
                             text  : 'x'
-                        }).click(function () {
+                        }).on('click',function () {
                             return $('#' + id).removeTag(escape(value));
                         })
                     ).insertBefore('#' + id + '_addTag');

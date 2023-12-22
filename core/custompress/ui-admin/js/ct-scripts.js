@@ -208,7 +208,7 @@ var content_types = {
         $('.ct-custom-fields select[name="field_type"]').on('change', field_type_options);
 
         // custom fields add options
-        $('.ct-field-add-option').click(function () {
+        $('.ct-field-add-option').on('click',function () {
             $('.ct-field-additional-options').append(function () {
                 var count = parseInt($('input[name="track_number"]').val(), 10) + 1;
                 $('input[name="track_number"]').val(count);
@@ -231,7 +231,7 @@ var content_types = {
             $(this).parent().remove();
         });
 
-        $('#embed-code-link').click(function () {
+        $('#embed-code-link').on('click',function () {
 
 
         });
@@ -255,7 +255,7 @@ var content_types = {
             "'day' d 'of' MM 'in the year' yy"
         ]);
 
-        $('#save_roles').click(function () {
+        $('#save_roles').on('click',function () {
             $('#ajax-loader').show();
             var data = $(this).closest('form').serializeArray();
             $.post(ajaxurl, data, function (data) {

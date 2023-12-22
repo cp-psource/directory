@@ -3,8 +3,8 @@
 /**
 * DR_Theme_Options
 *
-* @copyright Incsub 2007-2011 {@link http://incsub.com}
-* @author Ivan Shaovchev (Incsub)
+* @copyright WMS N@W 2011-2024 {@link https://n3rds.work}
+* @author DerN3rd
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 class DR_Theme_Options {
@@ -31,7 +31,7 @@ class DR_Theme_Options {
 	* Load up the menu page.
 	*/
 	function add_page() {
-		add_theme_page( __('Options', THEME_TEXT_DOMAIN), __('Options', THEME_TEXT_DOMAIN), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
+		add_theme_page( __('Optionen', THEME_TEXT_DOMAIN), __('Optionen', THEME_TEXT_DOMAIN), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
 	}
 
 	/**
@@ -39,10 +39,10 @@ class DR_Theme_Options {
 	*/
 	function output_admin_page() {
 		if ( isset( $_REQUEST['updated'] ) )
-		$msg = __( 'Options Saved!', THEME_TEXT_DOMAIN ); ?>
+		$msg = __( 'Optionen gespeichert!', THEME_TEXT_DOMAIN ); ?>
 
 		<div class="wrap">
-			<h2><?php echo wp_get_theme()->Name . ' ' . __('Options', THEME_TEXT_DOMAIN) ?></h2>
+			<h2><?php echo wp_get_theme()->Name . ' ' . __('Optionen', THEME_TEXT_DOMAIN) ?></h2>
 
 			<?php if ( isset( $msg ) ) : ?>
 			<div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
@@ -52,13 +52,13 @@ class DR_Theme_Options {
 				<?php settings_fields('dir_options_group'); ?>
 				<?php $options = get_option('dir_options'); ?>
 				<input type="hidden" name="dir_colors[enable]" value="1" />
-				<h3><?php _e( 'Presentation', THEME_TEXT_DOMAIN  ); ?></h3>
+				<h3><?php _e( 'Präsentation', THEME_TEXT_DOMAIN  ); ?></h3>
 				<table class="form-table">
 					<tr>
-						<th><label for="text_shadows"><?php _e('Text Shadows', THEME_TEXT_DOMAIN); ?></label></th>
+						<th><label for="text_shadows"><?php _e('Textschatten', THEME_TEXT_DOMAIN); ?></label></th>
 						<td>
 							<input id="text_shadows" type="checkbox" name="dir_options[text_shadows]" value="1" <?php if ( !empty( $options['text_shadows'] ) ) echo 'checked="checked"'; ?> />
-							<span class="description"><?php _e('Switch text shadows OFF', THEME_TEXT_DOMAIN); ?></span>
+							<span class="description"><?php _e('Schalte Textschatten aus', THEME_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
 				</table>
@@ -68,10 +68,10 @@ class DR_Theme_Options {
 						<th><label for="layout"><?php _e('Layout', THEME_TEXT_DOMAIN); ?></label></th>
 						<td>
 							<select id="layout" name="dir_options[layout]">;
-								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'grid' ) echo 'selected="selected"'; ?> value="grid"><?php _e( 'Grid Layout', THEME_TEXT_DOMAIN ); ?></option>;
-								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'row' ) echo 'selected="selected"'; ?> value="row"><?php _e( 'Rows Layout', THEME_TEXT_DOMAIN ); ?></option>
+								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'grid' ) echo 'selected="selected"'; ?> value="grid"><?php _e( 'Gitterstruktur', THEME_TEXT_DOMAIN ); ?></option>;
+								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'row' ) echo 'selected="selected"'; ?> value="row"><?php _e( 'Zeilenlayout', THEME_TEXT_DOMAIN ); ?></option>
 							</select>
-							<span class="description"><?php _e('Switch Theme Layout', THEME_TEXT_DOMAIN); ?></span>
+							<span class="description"><?php _e('Theme-Layout wechseln', THEME_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
 					<tr>
@@ -85,12 +85,12 @@ class DR_Theme_Options {
 								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'skinny' ) echo 'selected="selected"'; ?> value="skinny"><?php _e( 'Style Skinny', THEME_TEXT_DOMAIN ); ?></option>
 								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'wide' ) echo 'selected="selected"'; ?> value="wide"><?php _e( 'Style Wide', THEME_TEXT_DOMAIN ); ?></option>
 							</select>
-							<span class="description"><?php _e('Switch Theme Style', THEME_TEXT_DOMAIN); ?></span>
+							<span class="description"><?php _e('Themenstil wechseln', THEME_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
 				</table>
 				<p class="submit">
-					<input type="submit" class="button-primary" name="save_colors" value="<?php _e('Save Changes', THEME_TEXT_DOMAIN); ?>" />
+					<input type="submit" class="button-primary" name="save_colors" value="<?php _e('Änderungen speichern', THEME_TEXT_DOMAIN); ?>" />
 				</p>
 			</form>
 		</div> <?php

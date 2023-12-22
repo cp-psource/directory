@@ -184,7 +184,7 @@ if(is_multisite() ){
 				$(".dr_tab_content").hide();
 				$("ul.dr_tabs li:first").addClass("dr_active").show();
 				$(".dr_tab_content:first").show();
-				$("ul.dr_tabs li").click(function() {
+				$("ul.dr_tabs li").on('click',function() {
 					$("ul.dr_tabs li").removeClass("dr_active");
 					$(this).addClass("dr_active");
 					$(".dr_tab_content").hide();

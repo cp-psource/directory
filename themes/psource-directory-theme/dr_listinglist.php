@@ -107,7 +107,7 @@
 
 		<?php else : ?>
 
-		<h3><?php _e("Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go.", THEME_TEXT_DOMAIN); ?></h3>
+		<h3><?php _e("Sorry, we can't find the archive you're looking for at this URL. Bitte versuche, einen Menüpunkt oben oder neben dieser Nachricht auszuwählen, um dorthin zu gelangen, wo Du hin möchtest.", THEME_TEXT_DOMAIN); ?></h3>
 
 		<?php endif; ?>
 
