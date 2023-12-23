@@ -231,7 +231,7 @@ $.widget('ui.stars', {
 		/*
 		 * Finally, set up the Stars
 		 */
-		this.on( "select", o.value);
+		this._trigger('select', null, { value: o.value });
 		o.disabled && this.disable();
 
 	},
