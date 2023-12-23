@@ -16,7 +16,7 @@ $gateways = $this->get_options('gateways');
 			jQuery( "#tabs" ).tabs();
 		});
 
-		jQuery( "#gateways input[type='checkbox']" ).change( function () {
+		jQuery( "#gateways input[type='checkbox']" ).on( "change",  function () {
 			if ( 'payment_free' == jQuery( this ).attr( 'id' ) ) {
 				jQuery( "#gateways input[type='checkbox']" ).attr( 'checked', false );
 				jQuery( this ).attr( 'checked', true );

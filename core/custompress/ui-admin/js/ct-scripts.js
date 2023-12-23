@@ -222,7 +222,7 @@ var content_types = {
                 return input;
             });
 
-            $(".ct-field-additional-options input[type='text']:last").focus();
+            $(".ct-field-additional-options input[type='text']").last().trigger( "focus" );
             return false;
         });
 
@@ -264,7 +264,7 @@ var content_types = {
             return false;
         });
 
-        $('#roles').change(role_checkboxes);
+        $('#roles').on( "change", role_checkboxes);
 
         role_checkboxes();
 

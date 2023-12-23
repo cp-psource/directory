@@ -13,9 +13,9 @@ $options = $this->get_options('payments');
 		$("#one_time_table input" ).prop( "readonly" , ! $( "#enable_one_time" ).prop( "checked" ) );
 		$("#credits_table input" ).prop( "readonly" , ! $( "#enable_credits" ).prop( "checked" ) );
 
-		$( "#enable_recurring" ).change( function () {$("#recurring_table input" ).prop( "readonly" , ! $( "#enable_recurring" ).prop( "checked" ) ); });
-		$( "#enable_one_time" ).change( function () {$("#one_time_table input" ).prop( "readonly" , ! $( "#enable_one_time" ).prop( "checked" ) ); });
-		$( "#enable_credits" ).change( function () {$("#credits_table input, #credits_table textarea" ).prop( "readonly" , ! $( "#enable_credits" ).prop( "checked" ) ); });
+		$( "#enable_recurring" ).on( "change",  function () {$("#recurring_table input" ).prop( "readonly" , ! $( "#enable_recurring" ).prop( "checked" ) ); });
+		$( "#enable_one_time" ).on( "change",  function () {$("#one_time_table input" ).prop( "readonly" , ! $( "#enable_one_time" ).prop( "checked" ) ); });
+		$( "#enable_credits" ).on( "change",  function () {$("#credits_table input, #credits_table textarea" ).prop( "readonly" , ! $( "#enable_credits" ).prop( "checked" ) ); });
 
 		$( "#payment_settings" ).submit( function () {
 			if ( $( "#enable_recurring" ).prop( "checked" )
@@ -24,7 +24,7 @@ $options = $this->get_options('payments');
 				return true;
 			} else {
 				$( "#enable_recurring_tr" ).css( "background-color", "#FFEBE8" );
-				$( "#enable_recurring" ).focus();
+				$( "#enable_recurring" ).trigger( "focus" );
 				$( "#one_time_cost_tr" ).css( "background-color", "#FFEBE8" );
 				$( "#credits_tr" ).css( "background-color", "#FFEBE8" );
 			}

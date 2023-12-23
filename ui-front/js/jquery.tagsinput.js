@@ -83,7 +83,7 @@
 					tagslist = new Array();
 				}
 
-				value = jQuery.trim(value);
+				value = value.trim();
 		
 				if (options.unique) {
 					var skipTag = $(this).tagExist(value);
@@ -111,9 +111,9 @@
 				
 					$('#'+id+'_tag').val('');
 					if (options.focus) {
-						$('#'+id+'_tag').focus();
+						$('#'+id+'_tag').trigger( "focus" );
 					} else {		
-						$('#'+id+'_tag').blur();
+						$('#'+id+'_tag').trigger ( "blur" );
 					}
 					
 					$.fn.tagsInput.updateTagsField(this,tagslist);
@@ -241,7 +241,7 @@
 		        $(data.fake_input).resetAutosize(settings);
 		
 				$(data.holder).on('click',data,function(event) {
-					$(event.data.fake_input).focus();
+					$(event.data.fake_input).trigger( "focus" );
 				});
 			
 				$(data.fake_input).on('focus',data,function(event) {
@@ -305,21 +305,20 @@
 				//Delete last tag on backspace
 				data.removeWithBackspace && $(data.fake_input).on('keydown', function(event)
 				{
-					if(event.keyCode == 8 && $(this).val() == '')
-					{
-						 event.preventDefault();
-						 var last_tag = $(this).closest('.tagsinput').find('.tag:last').text();
-						 var id = $(this).attr('id').replace(/_tag$/, '');
-						 last_tag = last_tag.replace(/[\s]+x$/, '');
-						 $('#' + id).removeTag(escape(last_tag));
-						 $(this).trigger('focus');
+					if(event.keyCode == 8 && $(this).val() == ''){
+						event.preventDefault();
+						var last_tag = $(this).closest('.tagsinput').find('.tag').last().text();
+						var id = $(this).attr('id').replace(/_tag$/, '');
+						last_tag = last_tag.replace(/[\s]+x$/, '');
+						$('#' + id).removeTag(escape(last_tag));
+						$(this).trigger('focus');
 					}
 				});
-				$(data.fake_input).blur();
+				$(data.fake_input).trigger ( "blur" );
 				
 				//Removes the not_valid class when user changes the value of the fake input
 				if(data.unique) {
-				    $(data.fake_input).keydown(function(event){
+				    $(data.fake_input).on( "keydown", function(event){
 				        if(event.keyCode == 8 || String.fromCharCode(event.which).match(/\w+|[áéíóúÁÉÍÓÚñÑ,/]+/)) {
 				            $(this).removeClass('not_valid');
 				        }

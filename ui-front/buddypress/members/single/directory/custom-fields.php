@@ -5,9 +5,9 @@
 * The template for displaying BuddyPress Directory component include - custom fields.
 * You can override this file in your active theme ( not very advisable if you don't know what you are doing ).
 *
-* @package Directory
+* @package Verzeichnis
 * @subpackage UI Front BuddyPress
-* @since Directory 1.0
+* @since Verzeichnis 1.0
 */
 ?>
 

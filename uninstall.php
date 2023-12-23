@@ -1,7 +1,7 @@
 <?php
 /**
 * Uninstall Directory plugin
-* @package Directory
+* @package Verzeichnis
 * @version 1.0.0
 * @copyright Incsub 2007-2011 {@link http://incsub.com}
 * @author Arnold Bailey (Incsub)

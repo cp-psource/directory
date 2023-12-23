@@ -245,7 +245,7 @@ JS;
 	</form>
 </div>
 <script type="text/javascript">
-	jQuery('input[name="update_classified"]').mousedown( function() {
+	jQuery('input[name="update_classified"]').on( "mousedown",  function() {
 		tinyMCE.triggerSave();
 	});
 </script>

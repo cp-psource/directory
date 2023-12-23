@@ -72,7 +72,7 @@ class DR_Theme_Colors {
 			<script type="text/javascript">
 				//<![CDATA[
 				jQuery(document).ready(function($) {
-					$(this).mousedown(function() {
+					$(this).on( "mousedown", function() {
 						$(this).find('.colorpicker').each(function() {
 							var display = $(this).css('display');
 							if (display == 'block') {

@@ -14,9 +14,9 @@
  * be used if it exists and we ask for the loop with:
  * <code>get_template_part( 'loop', 'index' );</code>
  *
- * @package Directory
+ * @package Verzeichnis
  * @subpackage Author
- * @since Directory 2.2
+ * @since Verzeichnis 1.0
  */
 
 global $post, $wp_query, $query_string, $Directory_Core;

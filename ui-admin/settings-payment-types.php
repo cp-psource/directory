@@ -14,7 +14,7 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 <script language="JavaScript">
 	(function($) {
 		$(document).ready(function() {
-			$("#gateways input[type='checkbox']" ).change( function () {
+			$("#gateways input[type='checkbox']" ).on( "change",  function () {
 				if ('use_free' == $(this).attr( 'id' ) ) {
 					checked = $(this).prop('checked');
 					$("#gateways input[type='checkbox']" ).prop( 'checked', false );
@@ -22,7 +22,7 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 				} else {
 					$("#use_free").prop( 'checked', false );
 				}
-				$("#save").click();
+				$("#save").trigger( "click" );
 				return false;
 			});
 		});

@@ -3,9 +3,9 @@
  * The template for displaying Author Archive pages.
  * You can override this file in your active theme.
  *
- * @package Directory
+ * @package Verzeichnis
  * @subpackage UI Front
- * @since Directory 1.0
+ * @since Verzeichnis 1.0
  */
 global $query_string;
 

@@ -205,14 +205,14 @@ $.widget('ui.stars', {
 		 * Attach onReset event handler to the parent FORM
 		 */
 		this.$form.on('reset.stars', function(){
-			!o.disabled && self.select(o.defaultValue);
+			!o.disabled && self.on( "select", o.defaultValue);
 		});
 
 
 		/*
 		 * Clean up to avoid memory leaks in certain versions of IE 6
 		 */
-		$(window).unload(function(){
+		$(window).on( "unload", function(){
 			self.$cancel.off('.stars');
 			self.$stars.off('.stars');
 			self.$form.off('.stars');
@@ -242,7 +242,7 @@ $.widget('ui.stars', {
 		/*
 		 * Finally, set up the Stars
 		 */
-		this.select(o.value);
+		this.on( "select", o.value);
 		o.disabled && this.disable();
 
 	},

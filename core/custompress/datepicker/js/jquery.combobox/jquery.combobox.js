@@ -46,7 +46,7 @@
 			$('html').trigger('click');
 			thisSelector.buildSelectOptionList();
 			thisSelector.show();
-			thisCombobox.focus();
+			thisCombobox.trigger( "focus" );
 			return false;
 		})
 		this.bindKeypress();
@@ -61,7 +61,7 @@
 
 		bindKeypress : function () {
 			var thisCombobox = this;
-			this.textInputElement.keyup(function (event) {
+			this.textInputElement.on( "keyup", function (event) {
 				if (event.keyCode == Combobox.keys.TAB
 				|| event.keyCode == Combobox.keys.SHIFT)
 				{
@@ -126,10 +126,10 @@
 				thisSelector.selectPrevious();
 			} else if (e.keyCode == Combobox.keys.ESCAPE) {
 				thisSelector.hide();
-				thisSelector.combobox.focus();
+				thisSelector.combobox.trigger( "focus" );
 			} else if (e.keyCode == Combobox.keys.ENTER) {
 				thisSelector.combobox.setValue(thisSelector.getSelectedValue());
-				thisSelector.combobox.focus();
+				thisSelector.combobox.trigger( "focus" );
 				thisSelector.hide();
 			}
 			return false;
@@ -168,7 +168,7 @@
 			this.selectorElement.find('li').on('click',function (e) {
 				thisSelector.hide();
 				thisSelector.combobox.setValue(this.innerHTML);
-				thisSelector.combobox.focus();
+				thisSelector.combobox.trigger( "focus" );
 			});
 			this.selectorElement.mouseover(function (e) {
 				thisSelector.unselect();
@@ -185,9 +185,9 @@
 			{
 				return false;
 			}
-			$('html').keyup(this.keypressHandler);
+			$('html').on( "keyup", this.keypressHandler);
 			this.selectorElement.slideDown('fast');
-			$('html').click(this.htmlClickHandler);
+			$('html').on( "click", this.htmlClickHandler);
 			return true;
 		},
 
@@ -204,7 +204,7 @@
 			if (newSelectedIndex > this.optionCount - 1) {
 				newSelectedIndex = this.optionCount - 1;
 			}
-			this.select(newSelectedIndex);
+			this.on( "select", newSelectedIndex);
 		},
 
 		selectPrevious : function () {
@@ -212,7 +212,7 @@
 			if (newSelectedIndex < 0) {
 				newSelectedIndex = 0;
 			}
-			this.select(newSelectedIndex);
+			this.on( "select", newSelectedIndex);
 		},
 
 		select : function (index) {

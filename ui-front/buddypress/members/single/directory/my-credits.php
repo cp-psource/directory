@@ -5,9 +5,9 @@
 * The template for displaying BuddyPress Directory component - My Credits page.
 * You can override this file in your active theme.
 *
-* @package Directory
+* @package Verzeichnis
 * @subpackage UI Front BuddyPress
-* @since Directory 1.0
+* @since Verzeichnis 1.0
 */
 
 $options = $this->get_options('payments');
