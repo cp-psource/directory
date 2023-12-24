@@ -518,7 +518,7 @@ if ( ! class_exists( 'Directory_Core_Main' ) ):
 			}
 			//including CSS
 			if ( file_exists( get_template_directory() . '/style-directory.css' ) ) {
-				wp_enqueue_style( 'style-directory', get_bloginfo( 'template_url' ) . '/style-directory.css' );
+				wp_enqueue_style( 'style-directory', get_template_directory_uri() . '/style-directory.css' );
 			} elseif ( file_exists( $this->plugin_dir . 'ui-front/general/style-directory.css' ) ) {
 				wp_enqueue_style( 'style-directory', $this->plugin_url . 'ui-front/general/style-directory.css' );
 			}

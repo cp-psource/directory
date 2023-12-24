@@ -205,7 +205,7 @@ class DR_Payments{
 
 		// Redirect if user is logged in
 		if ( is_user_logged_in() ) {
-			//wp_redirect( get_bloginfo('url') );
+			//wp_redirect( home_url('/') );
 			//exit;
 		}
 

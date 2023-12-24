@@ -1368,18 +1368,18 @@ if (!class_exists('Directory_Core')):
 
         function email_replace($content = ''){
             global $post;
-
+        
             $user_info = get_userdata($post->post_author);
-
+        
             $result =
-                str_replace('SITE_NAME', get_bloginfo('name'),
+                str_replace('SITE_NAME', get_option('blogname'),
                     str_replace('POST_TITLE', $post->post_title,
                         str_replace('POST_LINK', make_clickable(get_permalink($post->ID)),
                             str_replace('TO_NAME', $user_info->nicename,
-                                str_replace('FROM_NAME', $_POST['name'],
-                                    str_replace('FROM_EMAIL', $_POST['email'],
-                                        str_replace('FROM_SUBJECT', $_POST['subject'],
-                                            str_replace('FROM_MESSAGE', $_POST['message'],
+                                str_replace('FROM_NAME', sanitize_text_field($_POST['name']),
+                                    str_replace('FROM_EMAIL', sanitize_email($_POST['email']),
+                                        str_replace('FROM_SUBJECT', sanitize_text_field($_POST['subject']),
+                                            str_replace('FROM_MESSAGE', sanitize_textarea_field($_POST['message']),
                                                 $content
                                             )
                                         )
@@ -1389,7 +1389,7 @@ if (!class_exists('Directory_Core')):
                         )
                     )
                 );
-
+        
             return $result;
         }
 
@@ -1432,7 +1432,7 @@ if (!class_exists('Directory_Core')):
                         $headers[] = "Content-Type: text/html; charset=\"" . get_option('blog_charset') . '"';
 
                         if ($options['cc_admin'] == '1') {
-                            $headers[] = "Cc: " . get_bloginfo('admin_email');
+                            $headers[] = "Cc: " . get_option('admin_email');
                         }
 
                         if ($options['cc_sender'] == '1') {

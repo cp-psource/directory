@@ -97,34 +97,34 @@ class DR_Theme_Options {
 	}
 
 	/**
-	* Load theme styles based on user options
-	*
-	* @return void
-	*/
+	 * Load theme styles based on user options
+	 *
+	 * @return void
+	 */
 	function output_theme_options() {
 		$options = get_option('dir_options');
+		$theme_directory = get_template_directory_uri();
+
 		// load main styles
-		if ( isset( $options['style'] ) ) { ?>
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/<?php echo $options['style']; ?>.css" type="text/css" media="all" />
-			<?php
-		} else { ?>
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/modern.css" type="text/css" media="all" />
-			<?php
-		}
+		if (isset($options['style'])) { ?>
+			<link rel="stylesheet" href="<?php echo esc_url($theme_directory); ?>/css/<?php echo esc_attr($options['style']); ?>.css" type="text/css" media="all" />
+		<?php } else { ?>
+			<link rel="stylesheet" href="<?php echo esc_url($theme_directory); ?>/css/modern.css" type="text/css" media="all" />
+		<?php }
+
 		// load layout styles
-		if ( isset( $options['layout'] ) ) { ?>
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-<?php echo $options['layout']; ?>.css" type="text/css" media="all" />
-			<?php
-		} else { ?>
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-grid.css" type="text/css" media="all" />
-			<?php
-		}
+		if (isset($options['layout'])) { ?>
+			<link rel="stylesheet" href="<?php echo esc_url($theme_directory); ?>/css/home-<?php echo esc_attr($options['layout']); ?>.css" type="text/css" media="all" />
+		<?php } else { ?>
+			<link rel="stylesheet" href="<?php echo esc_url($theme_directory); ?>/css/home-grid.css" type="text/css" media="all" />
+		<?php }
+
 		// load no text shadows styles
-		if ( !empty( $options['text_shadows'] ) ) { ?>
-			<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/notextshadows.css" type="text/css" media="all" />
-			<?php
-		}
+		if (!empty($options['text_shadows'])) { ?>
+			<link rel="stylesheet" href="<?php echo esc_url($theme_directory); ?>/css/notextshadows.css" type="text/css" media="all" />
+		<?php }
 	}
 }
+
 
 new DR_Theme_Options();

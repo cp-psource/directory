@@ -114,7 +114,8 @@ wp_enqueue_script('set-post-thumbnail');
 		<?php if(post_type_supports('directory_listing','editor') ): ?>
 		<label for="listingcontent"><?php _e( 'Inhalt', $this->text_domain ); ?></label><br />
 
-		<?php if(version_compare(get_bloginfo('version'), 3.3, '>=') ): ?>
+		<?php if (version_compare(get_bloginfo('version'), '3.3', '>=')): ?>
+
 
 		<?php wp_editor( $listing_content, 'listingcontent', $editor_settings); ?>
 
